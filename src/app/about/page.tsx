@@ -5,10 +5,10 @@ import { useTheme } from '@/components/ClientLayout';
 import { FaGlobe, FaAward, FaUsers, FaClock, FaShieldAlt, FaHeadset, FaArrowRight, FaQuoteLeft, FaCheckCircle, FaMedal, FaChartLine, FaPlane, FaRocket } from 'react-icons/fa';
 
 const milestones = [
-  { year: '2005', title: 'Company Founded', desc: 'SwiftXpress Inc. established in Miami, Florida, USA' },
+  { year: '2005', title: 'Company Founded', desc: 'SwiftXpress Inc. established in Las Vegas, Nevada, USA' },
   { year: '2008', title: 'Domestic Expansion', desc: 'Expanded operations across all 50 US states with next-day delivery' },
   { year: '2012', title: 'International Launch', desc: 'Began serving customers across 25+ countries worldwide' },
-  { year: '2016', title: 'Air Freight Hub', desc: 'Opened dedicated air freight hub at Miami International Airport' },
+  { year: '2016', title: 'Air Freight Hub', desc: 'Opened dedicated air freight hub at Las Vegas McCarran International Airport' },
   { year: '2020', title: 'Tech Upgrade', desc: 'Launched real-time GPS tracking and AI-powered logistics system' },
   { year: '2025', title: 'Global Leader', desc: 'Serving customers across 50+ countries with 2M+ deliveries' },
 ];
@@ -35,7 +35,7 @@ export default function About() {
       <div className="relative bg-gradient-to-br from-[#1a365d] to-[#2c5282] py-32">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-black/40"></div>
-          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1950&q=80" alt="Global logistics" className="h-full w-full object-cover" />
+          <img src="/assets/about-hero.png" alt="Global logistics" className="h-full w-full object-cover" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">About SwiftXpress Inc.</h1>
@@ -53,7 +53,7 @@ export default function About() {
                 Connecting the World,<br />One Shipment at a Time
               </h2>
               <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                Founded in 2005 in Miami, Florida, SwiftXpress Inc. has grown from a regional delivery service into a worldwide logistics network. We specialize in domestic and international shipping with a commitment to safe handling of all cargo types.
+                Founded in 2005 in Las Vegas, Nevada, SwiftXpress Inc. has grown from a regional delivery service into a worldwide logistics network. We specialize in domestic and international shipping with a commitment to safe handling of all cargo types.
               </p>
               <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
                 We believe that great logistics shouldn't be complicated. Our team works around the clock to ensure your packages arrive safely, on time, and in perfect condition — from small documents to large freight.

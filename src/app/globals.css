@@ -35,8 +35,37 @@ a {
 }
 
 .marquee-container {
-  animation: marquee 60s linear infinite;
+  animation: marquee 45s linear infinite;
   width: max-content;
+}
+
+.marquee-container::before,
+.marquee-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 60px;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.marquee-container::before {
+  left: 0;
+  background: linear-gradient(to right, white, transparent);
+}
+
+.marquee-container::after {
+  right: 0;
+  background: linear-gradient(to left, white, transparent);
+}
+
+.dark .marquee-container::before {
+  background: linear-gradient(to right, #1f2937, transparent);
+}
+
+.dark .marquee-container::after {
+  background: linear-gradient(to left, #1f2937, transparent);
 }
 
 .marquee-container:hover {

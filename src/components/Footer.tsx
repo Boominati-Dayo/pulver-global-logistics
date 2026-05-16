@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaPlane, FaGlobe } from 'react-icons/fa';
+import Image from 'next/image';
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaGlobe } from 'react-icons/fa';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -11,16 +12,8 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
-          <div>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-[#ea580c] to-[#f97316] rounded-xl flex items-center justify-center">
-                <FaPlane className="text-white text-lg" />
-              </div>
-              <div>
-<span className="font-bold text-lg">SXI</span>
-              <span className="text-xs block -mt-0.5 text-white/60">SwiftXpress Inc.</span>
-              </div>
-            </div>
+<div>
+            <Image src="/swiftXpress-logo.png" alt="SwiftXpress Inc." width={140} height={40} className="h-10 w-auto mb-4" />
             <p className="text-gray-300 text-sm mb-4 leading-relaxed">
               Delivering excellence across 50+ countries. Comprehensive logistics solutions with real-time tracking, air freight, sea freight, and express delivery services.
             </p>
@@ -58,7 +51,7 @@ export default function Footer() {
             <div className="space-y-3 text-sm">
               <div className="flex items-start space-x-3">
                 <FaMapMarkerAlt className="text-[#ea580c] mt-0.5 flex-shrink-0" />
-                <span className="text-gray-300">Miami, FL<br />Serving worldwide</span>
+                <span className="text-gray-300">Las Vegas, NV<br />Serving worldwide</span>
               </div>
               <div className="flex items-center space-x-3">
                 <FaPhone className="text-[#ea580c] flex-shrink-0" />
@@ -66,7 +59,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-3">
                 <FaEnvelope className="text-[#ea580c] flex-shrink-0" />
-                <a href="mailto:info@globalexpresslogistics.com" className="text-gray-300 hover:text-[#ea580c] transition-colors text-sm">info@globalexpresslogistics.com</a>
+                <a href="mailto:info@swiftxpressinc.com" className="text-gray-300 hover:text-[#ea580c] transition-colors text-sm">info@swiftxpressinc.com</a>
               </div>
               <div className="flex items-center space-x-3">
                 <FaClock className="text-[#ea580c] flex-shrink-0" />

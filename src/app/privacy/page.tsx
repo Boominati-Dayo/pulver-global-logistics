@@ -38,7 +38,7 @@ export default function Privacy() {
               <h2 className="text-2xl font-bold text-[#1a365d] dark:text-white">Contact Us</h2>
             </div>
             <p className="text-gray-600 dark:text-gray-400 mb-3">Questions about this Privacy Policy?</p>
-            <p className="text-[#1a365d] dark:text-white font-medium">Email: privacy@globalexpresslogistics.com | Phone: +1 (234) 567-890 | Address: Miami, FL</p>
+            <p className="text-[#1a365d] dark:text-white font-medium">Email: privacy@swiftxpressinc.com | Phone: +1 (234) 567-890 | Address: Las Vegas, NV</p>
           </section>
         </div>
       </div>

@@ -7,18 +7,22 @@ import { useTheme } from '@/components/ClientLayout';
 import { FaGlobe, FaCheckCircle, FaBox, FaPlane, FaShip, FaTruck, FaWarehouse, FaArrowRight, FaShieldAlt, FaHeadset, FaChartLine, FaStar, FaQuoteLeft, FaClock, FaMapMarkerAlt, FaPhone, FaEnvelope, FaShippingFast, FaUser, FaAward, FaCertificate, FaMedal, FaHandshake, FaLeaf, FaSearch, FaSpinner, FaPaw, FaRocket, FaBolt, FaCog, FaArrowDown, FaLock, FaMapPin, FaAnchor, FaRoute, FaBoxes, FaCheck } from 'react-icons/fa';
 
 const reviews = [
-  { name: "Marcus Thompson", role: "Supply Chain Director", company: "TechFlow Industries", rating: 5, text: "SwiftXpress Inc. transformed our cross-border shipping. Their tracking is real-time and incredibly reliable.", location: "Chicago, IL" },
+  { name: "Marcus Thompson", role: "Supply Chain Director", company: "TechFlow Industries", rating: 4, text: "SwiftXpress Inc. transformed our cross-border shipping. Their tracking is real-time and incredibly reliable.", location: "Chicago, IL" },
   { name: "Jennifer Nakamura", role: "Operations Manager", company: "Sakura Electronics", rating: 5, text: "The customs clearance process with SXI is seamless. They handle all documentation professionally.", location: "Los Angeles, CA" },
-  { name: "Robert Chen", role: "Import/Export Manager", company: "Pacific Trade Co", rating: 4, text: "Reliable partner for international shipments. Excellent communication throughout the process.", location: "Seattle, WA" },
+  { name: "Robert Chen", role: "Import/Export Manager", company: "Pacific Trade Co", rating: 3, text: "Reliable partner for international shipments. Had some delays on one shipment but overall decent service.", location: "Seattle, WA" },
   { name: "Sarah Mitchell", role: "E-commerce Owner", company: "Urban Trends Boutique", rating: 5, text: "As a small business, I need a logistics partner I can trust. SXI delivers every time.", location: "Austin, TX" },
   { name: "David Kowalski", role: "Logistics Coordinator", company: "Midwest Manufacturing", rating: 4, text: "Their warehouse management integration saved us hours of manual work every week.", location: "Detroit, MI" },
   { name: "Amanda Price", role: "CEO", company: "GreenLeaf Organics", rating: 5, text: "SXI's carbon-offset program aligns perfectly with our sustainability commitment.", location: "Portland, OR" },
-  { name: "Michael Santos", role: "Procurement Manager", company: "Apex Construction", rating: 4, text: "Heavy equipment shipping requires expertise. SXI has the right equipment and experience.", location: "Phoenix, AZ" },
-  { name: "Emily Watson", role: "Fulfillment Lead", company: "HomeStyle Decor", rating: 5, text: "Competitive rates and reliable LTL services. SXI is now our go-to logistics partner.", location: "Charlotte, NC" },
-  { name: "James Okonkwo", role: "International Sales", company: "AfroTech Solutions", rating: 5, text: "Shipping to 15 African countries is now seamless with SXI's expertise.", location: "Atlanta, GA" },
-  { name: "Lisa Fernandez", role: "Pharma Operations", company: "MedCore Pharmaceuticals", rating: 5, text: "Temperature-controlled shipping for medical supplies is critical. SXI delivers every time.", location: "Miami, FL" },
+  { name: "Michael Santos", role: "Procurement Manager", company: "Apex Construction", rating: 3, text: "Heavy equipment shipping requires expertise. Service was decent but communication could be better.", location: "Phoenix, AZ" },
+  { name: "Emily Watson", role: "Fulfillment Lead", company: "HomeStyle Decor", rating: 4, text: "Competitive rates and reliable LTL services. SXI is now our go-to logistics partner.", location: "Charlotte, NC" },
+  { name: "James Okonkwo", role: "International Sales", company: "AfroTech Solutions", rating: 5, text: "Shipping to 8 African countries is now seamless with SXI's expertise.", location: "Atlanta, GA" },
+  { name: "Lisa Fernandez", role: "Pharma Operations", company: "MedCore Pharmaceuticals", rating: 4, text: "Temperature-controlled shipping for medical supplies is critical. SXI delivers most of the time.", location: "Las Vegas, NV" },
   { name: "Kevin O'Brien", role: "Fleet Manager", company: "O'Brien Fresh Foods", rating: 4, text: "Perishable goods need speed and reliability. SXI's refrigerated fleet is modern and dependable.", location: "Boston, MA" },
   { name: "Priya Sharma", role: "Fashion Buyer", company: "Boutique Boulevard", rating: 5, text: "Fashion moves fast, and so does SXI. Same-day delivery is a game-changer.", location: "New York, NY" },
+  { name: "Derek Hoffman", role: "Warehouse Manager", company: "Hoffman Distribution", rating: 3, text: "Decent service overall. Had a couple of tracking issues but they resolved them promptly.", location: "Denver, CO" },
+  { name: "Michelle Park", role: "Operations Lead", company: "Pacific Commerce", rating: 4, text: "Good partner for small business shipping. Rates are fair and delivery is consistent.", location: "San Francisco, CA" },
+  { name: "Carlos Vega", role: "Supply Chain Analyst", company: "Vega Logistics Group", rating: 2, text: "Service was slower than expected during peak season. Not bad but room for improvement.", location: "Houston, TX" },
+  { name: "Rachel Kim", role: "Procurement Officer", company: "Metro Supplies Co", rating: 5, text: "Excellent customer service and reliable deliveries. SXI has been a great partner for our business.", location: "Philadelphia, PA" },
 ];
 
 const renderStars = (rating: number) => (
@@ -27,16 +31,7 @@ const renderStars = (rating: number) => (
   ))
 );
 
-const partners = [
-  { name: 'FedEx', abbr: 'FDX' },
-  { name: 'UPS', abbr: 'UPS' },
-  { name: 'DHL', abbr: 'DHL' },
-  { name: 'Maersk', abbr: 'MSK' },
-  { name: 'DB Schenker', abbr: 'DBS' },
-  { name: 'Kuehne+Nagel', abbr: 'KN' },
-  { name: 'XPO Logistics', abbr: 'XPO' },
-  { name: 'C.H. Robinson', abbr: 'CHR' },
-];
+
 
 const bentoServices = [
   { icon: FaTruck, title: 'Ground Transport', desc: 'Nationwide coverage with reliable delivery.', href: '/services/ground-transport' },
@@ -47,6 +42,20 @@ const bentoServices = [
   { icon: FaPaw, title: 'Pet Transport', desc: 'Safe pet shipping worldwide.', href: '/services/pet-transport' },
   { icon: FaShieldAlt, title: 'Valuable Goods', desc: 'Insured shipping for precious cargo.', href: '/services/valuable-goods' },
   { icon: FaCog, title: 'Custom Solutions', desc: 'Tailored logistics for your needs.', href: '/services/custom-solutions' },
+];
+
+const partnersLogo = [
+  { name: 'FedEx', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/fedex.svg' },
+  { name: 'Aramex', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/aramex.svg' },
+  { name: 'Japan Post', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/japan-post.jpg' },
+  { name: 'DTDC', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/Others/dtdc.svg' },
+  { name: 'USPS', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/usps-usa.svg' },
+  { name: 'Poste Italiane', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/Others/poste-italiane.svg' },
+  { name: 'La Poste', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/la-poste-colissimo-france.svg' },
+  { name: 'UPS', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/ups.svg' },
+  { name: 'DPD', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/dpd.svg' },
+  { name: 'GLS', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/gls.svg' },
+  { name: 'PostNL', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/postnl-parcel-service-tracking.png' },
 ];
 
 const deliveryOptions = [
@@ -120,17 +129,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Partners Marquee */}
-      <section className="py-12 bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700 overflow-hidden">
-        <p className="text-center text-sm text-gray-500 dark:text-gray-400 mb-8 uppercase tracking-wider font-medium">Trusted Logistics Partners</p>
-        <div className="relative overflow-hidden py-2">
-          <div className="flex gap-8 marquee-container">
-            {[...partners, ...partners, ...partners].map((partner, index) => (
-              <div key={index} className="flex flex-col items-center gap-2 px-6 py-3 rounded-xl bg-gray-50 dark:bg-gray-700/50 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors flex-shrink-0">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#1a365d] to-[#2c5282] flex items-center justify-center">
-                  <span className="text-white font-bold text-xs">{partner.abbr}</span>
-                </div>
-                <span className="text-xs text-gray-500 dark:text-gray-400 font-medium text-center whitespace-nowrap">{partner.name}</span>
+      {/* Partners Logo Marquee */}
+      <section className="py-16 bg-white dark:bg-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-8">
+          <h3 className="text-lg font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Trusted Shipping Partners</h3>
+        </div>
+        <div className="relative overflow-hidden">
+          <div className="flex gap-8 marquee-container" style={{ maskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)' }}>
+            {[...partnersLogo, ...partnersLogo].map((partner, index) => (
+              <div key={index} className="flex-shrink-0">
+                <img src={partner.logo} alt={partner.name} className="h-12 w-auto object-contain" />
               </div>
             ))}
           </div>
@@ -142,10 +150,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { value: '50+', label: 'Countries Served' },
-              { value: '20+', label: 'Years of Excellence' },
-              { value: '2M+', label: 'Packages Delivered' },
-              { value: '24/7', label: 'Customer Support' },
+              { value: '12', label: 'Countries Served' },
+              { value: '3', label: 'Years in Business' },
+              { value: '18K+', label: 'Packages Delivered' },
+              { value: '9AM-6PM', label: 'Mon-Fri Support' },
             ].map((stat, index) => (
               <div key={index} className="text-white">
                 <div className="text-3xl md:text-4xl font-extrabold">{stat.value}</div>
@@ -325,65 +333,14 @@ export default function Home() {
         </div>
         <div className="mt-12 text-center">
           <div className="inline-flex items-center bg-white dark:bg-gray-800 rounded-full px-6 py-3 shadow-lg border border-gray-200 dark:border-gray-600">
-            <span className="text-2xl font-bold text-[#ea580c] mr-2">4.9</span>
-            <div className="flex mr-2">{renderStars(5)}</div>
-            <span className="text-gray-500 dark:text-gray-400 text-sm">Based on 1,200+ reviews</span>
+            <span className="text-2xl font-bold text-[#ea580c] mr-2">4.2</span>
+            <div className="flex mr-2">{renderStars(4)}</div>
+            <span className="text-gray-500 dark:text-gray-400 text-sm">Based on 180+ reviews</span>
           </div>
         </div>
       </section>
 
-      {/* Partners Logo Marquee */}
-      <section className="py-16 bg-white dark:bg-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-8">
-          <h3 className="text-lg font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Trusted Shipping Partners</h3>
-        </div>
-        <div className="relative overflow-hidden">
-          <div className="flex animate-scroll">
-            {[
-              { name: 'FedEx', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/fedex.svg' },
-              { name: 'Aramex', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/aramex.svg' },
-              { name: 'Japan Post', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/japan-post.jpg' },
-              { name: 'DTDC', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/Others/dtdc.svg' },
-              { name: 'USPS', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/usps-usa.svg' },
-              { name: 'Poste Italiane', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/Others/poste-italiane.svg' },
-              { name: 'La Poste', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/la-poste-colissimo-france.svg' },
-              { name: 'UPS', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/ups.svg' },
-              { name: 'DPD', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/dpd.svg' },
-              { name: 'GLS', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/gls.svg' },
-              { name: 'PostNL', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/postnl-parcel-service-tracking.png' },
-            ].map((partner, index) => (
-              <div key={index} className="flex-shrink-0 mx-8">
-                <img
-                  src={partner.logo}
-                  alt={partner.name}
-                  className="h-12 w-auto object-contain"
-                />
-              </div>
-            ))}
-            {[
-              { name: 'FedEx', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/fedex.svg' },
-              { name: 'Aramex', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/aramex.svg' },
-              { name: 'Japan Post', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/japan-post.jpg' },
-              { name: 'DTDC', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/Others/dtdc.svg' },
-              { name: 'USPS', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/usps-usa.svg' },
-              { name: 'Poste Italiane', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/Others/poste-italiane.svg' },
-              { name: 'La Poste', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/la-poste-colissimo-france.svg' },
-              { name: 'UPS', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/ups.svg' },
-              { name: 'DPD', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/dpd.svg' },
-              { name: 'GLS', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/gls.svg' },
-              { name: 'PostNL', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/postnl-parcel-service-tracking.png' },
-            ].map((partner, index) => (
-              <div key={`duplicate-${index}`} className="flex-shrink-0 mx-8">
-                <img
-                  src={partner.logo}
-                  alt={partner.name}
-                  className="h-12 w-auto object-contain"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-[#ea580c] to-[#f97316]">

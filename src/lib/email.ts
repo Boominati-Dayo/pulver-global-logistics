@@ -76,7 +76,7 @@ const getBaseTemplate = (content: string, footerContent?: string) => `
     <tr>
       <td style="background-color: #f8f8f8; padding: 30px; border-top: 1px solid #e0e0e0; text-align: center;">
         <p style="color: #1a365d; margin: 0; font-weight: 600; font-size: 14px;">Global Express Logistics (GEL)</p>
-        <p style="color: #666; font-size: 12px; margin: 5px 0 0;">Miami, FL, USA | Phone: +1(786)123-4567</p>
+        <p style="color: #666; font-size: 12px; margin: 5px 0 0;">Las Vegas, NV, USA | Phone: +1(702)123-4567</p>
         <p style="color: #666; font-size: 12px; margin: 5px 0;">Email: info@globalexpresslogistics.com</p>
         <p style="color: #999; font-size: 11px; margin: 15px 0 0;">© ${new Date().getFullYear()} Global Express Logistics (GEL). All rights reserved.</p>
         ${footerContent || '<p style="color: #999; font-size: 11px; margin: 10px 0 0;">This is an automated message. Please do not reply to this email.</p>'}

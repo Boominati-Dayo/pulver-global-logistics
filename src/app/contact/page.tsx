@@ -48,9 +48,9 @@ export default function Contact() {
             </div>
             <div className="space-y-5">
               {[
-                { icon: FaMapMarkerAlt, title: 'Our Office', content: 'Miami, FL\nUnited States' },
+                { icon: FaMapMarkerAlt, title: 'Our Office', content: 'Las Vegas, NV\nUnited States' },
                 { icon: FaPhone, title: 'Phone', content: '+1 (234) 567-890' },
-                { icon: FaEnvelope, title: 'Email', content: 'info@globalexpresslogistics.com' },
+                { icon: FaEnvelope, title: 'Email', content: 'info@swiftxpressinc.com' },
                 { icon: FaClock, title: 'Business Hours', content: 'Mon-Sat: 8AM - 10PM EST\nSun: Emergency only' },
               ].map((item, index) => (
                 <div key={index} className="flex items-start gap-4">

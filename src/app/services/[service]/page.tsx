@@ -12,7 +12,7 @@ const services = {
     price: 'From $29.99/pkg',
     color: 'from-blue-500 to-blue-600',
     accentColor: '#3b82f6',
-    description: 'Fast and reliable air freight services to over 50 countries worldwide. When speed matters, GEL delivers with precision and reliability. Our air freight solutions are designed for businesses and individuals who need time-definite delivery without compromising on safety.',
+    description: 'Fast and reliable air freight services to over 50 countries worldwide. When speed matters, SXI delivers with precision and reliability. Our air freight solutions are designed for businesses and individuals who need time-definite delivery without compromising on safety.',
     heroImage: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80',
     features: [
       '1-3 day delivery to 50+ countries',
@@ -79,7 +79,7 @@ const services = {
     color: 'from-emerald-500 to-green-600',
     accentColor: '#10b981',
     description: 'Reliable ground transportation across the USA with next-day and economy options. Perfect for domestic shipments of all sizes. Our extensive carrier network ensures your packages arrive safely and on time, whether to residential or commercial addresses.',
-    heroImage: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80',
+    heroImage: '/assets/land-shipment.png',
     features: [
       'Nationwide USA coverage',
       'Ground and LTL services',
@@ -145,7 +145,7 @@ const services = {
     color: 'from-purple-500 to-violet-600',
     accentColor: '#8b5cf6',
     description: 'When you need it now, our express delivery service delivers. Same-day, next-day, and time-definite options for urgent shipments. Perfect for critical business documents, medical supplies, e-commerce rush orders, and time-sensitive packages.',
-    heroImage: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80',
+    heroImage: '/assets/express-delivery.webp',
     features: [
       'Same-day delivery options',
       'Next-day delivery nationwide',
