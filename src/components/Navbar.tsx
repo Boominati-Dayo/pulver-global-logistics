@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useTheme } from './ClientLayout';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -74,14 +75,8 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-2 py-2">
           <div className="flex items-center justify-between">
-            <Link href="/" className="pl-2 flex items-center gap-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-[#ea580c] to-[#f97316] rounded-xl flex items-center justify-center shadow-md">
-                <FaPlane className="text-white text-base" />
-              </div>
-              <div className="hidden sm:block">
-                <span className="font-bold text-lg text-[#ea580c]">SXI</span>
-                <span className={`text-[10px] block -mt-0.5 ${isScrolledOrNonHome ? 'text-gray-500 dark:text-gray-400' : 'text-white/60'}`}>SwiftXpress Inc.</span>
-              </div>
+            <Link href="/" className="pl-2">
+              <Image src="/swiftXpress-logo.png" alt="SwiftXpress Inc." width={140} height={40} className="h-10 w-auto" />
             </Link>
 
             <div className="hidden lg:flex items-center gap-1">

@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { generateToken } from '@/lib/auth';
 
-const ADMIN_EMAIL = 'admin@globalexpresslogistics.com';
-const ADMIN_PASSWORD = 'GEL_Admin@2025!';
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@swiftxpressinc.com';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'SXI_Admin@2025!';
 
 export async function POST(request: NextRequest) {
   try {

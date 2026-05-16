@@ -1,9 +1,8 @@
-'use client';
-
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { FaLock, FaEnvelope, FaEye, FaEyeSlash, FaSpinner, FaBox } from 'react-icons/fa';
+import Image from 'next/image';
+import { FaLock, FaEnvelope, FaEye, FaEyeSlash, FaSpinner } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -48,9 +47,7 @@ export default function Login() {
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-3">
-            <div className="w-14 h-14 bg-gradient-to-br from-[#ea580c] to-[#f97316] rounded-2xl flex items-center justify-center shadow-lg">
-              <FaBox className="text-white text-2xl" />
-            </div>
+            <Image src="/swiftXpress-logo-icon.png" alt="SwiftXpress Inc." width={56} height={56} className="w-14 h-14 rounded-2xl" />
           </Link>
         </div>
         <div className="bg-white rounded-2xl shadow-2xl p-8">
@@ -72,7 +69,7 @@ export default function Login() {
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
               <div className="relative">
-                <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} className="w-full pl-4 pr-10 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#ea580c] focus:border-transparent outline-none transition-all" placeholder="Enter password" />
+                <input type={showPassword ? 'text' : 'password'} required value={password} onChange={(e) => setPassword(e.target.value)} className="w-full pl-4 pr-10 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#ea580c] focus:border-transparent outline-none transition-all" placeholder="Enter password" />
                 <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">{showPassword ? <FaEyeSlash /> : <FaEye />}</button>
               </div>
             </div>

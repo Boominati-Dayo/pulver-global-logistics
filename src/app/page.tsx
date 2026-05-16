@@ -77,9 +77,8 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-[#1a365d] via-[#0f2340] to-[#1a365d] min-h-[650px] flex items-center overflow-hidden pt-[120px]">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-black/40"></div>
-          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1950&q=80" alt="Global logistics" className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1a365d]/90 via-transparent to-[#0f2340]/80"></div>
+          <img src="/assets/home-hero.webp" alt="SwiftXpress logistics" className="h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1a365d]/85 via-transparent to-[#0f2340]/80"></div>
         </div>
         <div className="absolute top-24 right-8 w-72 h-72 bg-[#ea580c]/20 rounded-full blur-3xl"></div>
         <div className="absolute bottom-8 left-8 w-96 h-96 bg-[#2c5282]/30 rounded-full blur-3xl"></div>
@@ -333,11 +332,64 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Partners Logo Marquee */}
+      <section className="py-16 bg-white dark:bg-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-8">
+          <h3 className="text-lg font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Trusted Shipping Partners</h3>
+        </div>
+        <div className="relative overflow-hidden">
+          <div className="flex animate-scroll">
+            {[
+              { name: 'FedEx', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/fedex.svg' },
+              { name: 'Aramex', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/aramex.svg' },
+              { name: 'Japan Post', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/japan-post.jpg' },
+              { name: 'DTDC', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/Others/dtdc.svg' },
+              { name: 'USPS', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/usps-usa.svg' },
+              { name: 'Poste Italiane', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/Others/poste-italiane.svg' },
+              { name: 'La Poste', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/la-poste-colissimo-france.svg' },
+              { name: 'UPS', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/ups.svg' },
+              { name: 'DPD', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/dpd.svg' },
+              { name: 'GLS', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/gls.svg' },
+              { name: 'PostNL', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/postnl-parcel-service-tracking.png' },
+            ].map((partner, index) => (
+              <div key={index} className="flex-shrink-0 mx-8">
+                <img
+                  src={partner.logo}
+                  alt={partner.name}
+                  className="h-12 w-auto object-contain"
+                />
+              </div>
+            ))}
+            {[
+              { name: 'FedEx', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/fedex.svg' },
+              { name: 'Aramex', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/aramex.svg' },
+              { name: 'Japan Post', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/japan-post.jpg' },
+              { name: 'DTDC', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/Others/dtdc.svg' },
+              { name: 'USPS', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/usps-usa.svg' },
+              { name: 'Poste Italiane', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/Others/poste-italiane.svg' },
+              { name: 'La Poste', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/la-poste-colissimo-france.svg' },
+              { name: 'UPS', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/ups.svg' },
+              { name: 'DPD', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/dpd.svg' },
+              { name: 'GLS', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/gls.svg' },
+              { name: 'PostNL', logo: 'https://cdn.ship24.com/assets/images/db/couriers/legacy-logo/postnl-parcel-service-tracking.png' },
+            ].map((partner, index) => (
+              <div key={`duplicate-${index}`} className="flex-shrink-0 mx-8">
+                <img
+                  src={partner.logo}
+                  alt={partner.name}
+                  className="h-12 w-auto object-contain"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-[#ea580c] to-[#f97316]">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Ship with Us?</h2>
-          <p className="text-xl text-white/80 mb-8">Experience the GEL difference today</p>
+          <p className="text-xl text-white/80 mb-8">Experience the SXI difference today</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-[#1a365d] text-white font-bold rounded-full hover:bg-[#0f2340] transition-all shadow-lg">
               Get Started Now <FaArrowRight className="ml-2" />
