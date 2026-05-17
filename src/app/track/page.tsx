@@ -91,6 +91,8 @@ function TrackContent() {
                   </button>
                 </div>
               </div>
+            </div>
+          </div>
 
           {/* Route Summary */}
           <div className="bg-gradient-to-r from-[#1a365d] to-[#2c5282] rounded-2xl p-5 md:p-6 text-white">
