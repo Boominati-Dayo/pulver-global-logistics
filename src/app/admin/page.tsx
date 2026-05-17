@@ -258,7 +258,13 @@ export default function Admin() {
 
   const filteredTrackings = trackings.filter(t => t.trackingNumber.toLowerCase().includes(searchQuery.toLowerCase()) || t.shipperName.toLowerCase().includes(searchQuery.toLowerCase()) || t.receiverName.toLowerCase().includes(searchQuery.toLowerCase()));
 
-  if (isLoading) return <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#ea580c]"></div></div>;
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#ea580c]"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 pt-24 px-4">
@@ -494,9 +500,31 @@ export default function Admin() {
           </div>
         </div>
       )}
-        
-        {showSettings && <SiteSettingsModal onClose={() => setShowSettings(false)} />}
-      </div>
+
+      {showMessageModal && selectedTracking && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-2 sm:p-4">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 md:p-6 w-full max-w-lg shadow-2xl">
+            {sendSuccess ? (
+              <div className="text-center py-6 md:py-8"><div className="w-14 h-14 md:w-16 md:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"><FaCheck className="text-green-600 text-2xl md:text-3xl" /></div><h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white">Message Sent!</h3></div>
+            ) : (
+              <>
+                <div className="flex justify-between items-center mb-4 md:mb-6"><h2 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2"><FaEnvelope className="text-[#ea580c]" /> Send Message</h2><button onClick={() => setShowMessageModal(false)} className="text-gray-500 hover:text-gray-700 dark:text-gray-400"><FaTimes size={20} /></button></div>
+                <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 md:p-4 mb-4">
+                  <p className="text-xs md:text-sm text-gray-500">To: <span className="font-medium text-gray-900 dark:text-white">{messageRecipient === 'shipper' ? selectedTracking.shipperName : selectedTracking.receiverName}</span></p>
+                  <p className="text-xs md:text-sm text-gray-500">Ref: <span className="font-bold text-[#ea580c] dark:text-[#f97316]">{selectedTracking.trackingNumber}</span></p>
+                </div>
+                <form onSubmit={handleSendMessage} className="space-y-3 md:space-y-4">
+                  <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Subject *</label><input type="text" required value={messageData.subject} onChange={(e) => setMessageData({...messageData, subject: e.target.value})} className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
+                  <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message *</label><textarea required rows={3} value={messageData.message} onChange={(e) => setMessageData({...messageData, message: e.target.value})} className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white resize-none text-sm md:text-base" /></div>
+                  <div className="flex flex-col-reverse sm:flex-row justify-end gap-2 md:gap-3 pt-2"><button type="button" onClick={() => setShowMessageModal(false)} className="px-4 md:px-5 py-2 border border-gray-300 text-gray-700 dark:border-gray-600 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-sm md:text-base">Cancel</button><button type="submit" disabled={isSending} className="px-4 md:px-5 py-2 bg-[#1a365d] text-white rounded-lg disabled:opacity-50 flex items-center justify-center gap-2 text-sm md:text-base">{isSending ? <><FaSpinner className="animate-spin" /> Sending...</> : <><FaEnvelope /> Send</>}</button></div>
+                </form>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+
+      {showSettings && <SiteSettingsModal onClose={() => setShowSettings(false)} />}
     </div>
   );
 }
