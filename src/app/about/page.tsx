@@ -6,18 +6,17 @@ import { FaGlobe, FaAward, FaUsers, FaClock, FaShieldAlt, FaHeadset, FaArrowRigh
 
 const milestones = [
   { year: '2022', title: 'Company Founded', desc: 'SwiftXpress Inc. established in Las Vegas, Nevada, USA' },
-  { year: '2008', title: 'Domestic Expansion', desc: 'Expanded operations across all 50 US states with next-day delivery' },
-  { year: '2012', title: 'International Launch', desc: 'Began serving customers across 25+ countries worldwide' },
-  { year: '2016', title: 'Air Freight Hub', desc: 'Opened dedicated air freight hub at Las Vegas McCarran International Airport' },
-  { year: '2020', title: 'Tech Upgrade', desc: 'Launched real-time GPS tracking and AI-powered logistics system' },
-  { year: '2025', title: 'Global Leader', desc: 'Serving customers across 50+ countries with 2M+ deliveries' },
+  { year: '2023', title: 'Domestic Launch', desc: 'Started serving customers across the USA with standard ground shipping' },
+  { year: '2024', title: 'Air Freight Added', desc: 'Launched air freight services for faster domestic deliveries' },
+  { year: '2025', title: 'International Expansion', desc: 'Expanded to serve 12 countries worldwide with reliable logistics' },
+  { year: '2026', title: 'Growing Strong', desc: 'Serving businesses and individuals with 18K+ successful deliveries' },
 ];
 
 const values = [
   { icon: FaRocket, title: 'Speed', desc: 'We prioritize fast, efficient delivery without compromising reliability.' },
   { icon: FaShieldAlt, title: 'Reliability', desc: 'Your shipments arrive safely and on time, every time.' },
-  { icon: FaGlobe, title: 'Global Reach', desc: 'Serving 50+ countries with a network of trusted partners.' },
-  { icon: FaUsers, title: 'Customer First', desc: '24/7 support dedicated to solving your logistics challenges.' },
+  { icon: FaGlobe, title: 'Global Reach', desc: 'Serving 12 countries with a network of trusted partners.' },
+  { icon: FaUsers, title: 'Customer First', desc: 'Dedicated support team available Mon-Fri to solve your logistics challenges.' },
 ];
 
 const stats = [
@@ -105,7 +104,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1a365d] dark:text-white mb-4">Our Journey</h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400">20 years of logistics excellence</p>
+            <p className="text-lg text-gray-600 dark:text-gray-400">3 years of logistics excellence</p>
           </div>
           <div className="relative">
             <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-[#ea580c] to-[#f97316] hidden md:block rounded-full"></div>

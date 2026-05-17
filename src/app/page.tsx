@@ -221,7 +221,7 @@ export default function Home() {
             <div className="relative">
               <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" alt="SXI Logistics" className="rounded-3xl shadow-2xl" />
               <div className="absolute -bottom-6 -right-6 bg-gradient-to-br from-[#ea580c] to-[#f97316] rounded-2xl p-6 shadow-xl">
-                <p className="text-4xl font-extrabold text-white">20+</p>
+                <p className="text-4xl font-extrabold text-white">3+</p>
                 <p className="text-white/90 text-sm font-medium">Years of Excellence</p>
               </div>
             </div>
@@ -231,7 +231,7 @@ export default function Home() {
                 Your Trusted Logistics Partner Since 2022
               </h2>
               <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-                With over two decades of experience, SwiftXpress Inc. has built a reputation for reliability, transparency, and exceptional service. We connect businesses to global markets with efficiency and care.
+                With 3 years of experience, SwiftXpress Inc. has built a reputation for reliability, transparency, and exceptional service. We connect businesses to global markets with efficiency and care.
               </p>
               <div className="grid grid-cols-2 gap-5">
                 {[
