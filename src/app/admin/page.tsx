@@ -277,7 +277,7 @@ export default function Admin() {
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Admin Dashboard</h1>
             <p className="text-gray-500 dark:text-gray-400 mt-1">Manage shipments and track deliveries</p>
           </div>
-          <div className="flex gap-3">
+          <div className="flex flex-col md:flex-row gap-3">
             <button onClick={() => setShowForm(true)} className="flex items-center gap-2 px-5 py-2.5 bg-[#1a365d] text-white rounded-lg hover:bg-[#2c5282] shadow-lg">
               <FaPlus /> New Shipment
             </button>
