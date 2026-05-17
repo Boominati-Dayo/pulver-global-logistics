@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { getStatusBg, getStatusText } from '@/lib/statusUtils';
 import { FaSearch, FaPlus, FaTrash, FaEnvelope, FaTimes, FaSpinner, FaCheck, FaUser, FaBox, FaArrowRight, FaCalendar, FaClock, FaEdit, FaMapMarkerAlt, FaGlobe, FaArrowUp, FaCog } from 'react-icons/fa';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface Tracking {
   _id: string;
@@ -268,6 +270,7 @@ export default function Admin() {
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 pt-24 px-4">
+      <ToastContainer position="top-center" autoClose={4000} />
       <div className="max-w-7xl mx-auto p-6">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
           <div>
@@ -567,7 +570,13 @@ function SiteSettingsModal({ onClose }: { onClose: () => void }) {
     finally { setIsSaving(false); }
   };
 
-  if (isLoading) return <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50"><FaSpinner className="animate-spin text-white text-3xl" /></div>;
+  if (isLoading) {
+    return (
+      <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+        <FaSpinner className="animate-spin text-white text-3xl" />
+      </div>
+    );
+  }
 
   return (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
