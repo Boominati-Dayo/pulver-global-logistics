@@ -83,6 +83,30 @@ export default function RootLayout({
       <head>
         <meta name="theme-color" content="#1a365d" />
         <meta name="color-scheme" content="light dark" />
+
+        <Script id="smartsupp-chat" strategy="afterInteractive">
+          {`
+            var _smartsupp = _smartsupp || {};
+            _smartsupp.key = '2bb2b5c624922e5b9b0efa663193a6dd85387609';
+
+            window.smartsupp || (function(d) {
+              var s, c, o = smartsupp = function() {
+                o._.push(arguments);
+              };
+
+              o._ = [];
+              s = d.getElementsByTagName('script')[0];
+              c = d.createElement('script');
+
+              c.type = 'text/javascript';
+              c.charset = 'utf-8';
+              c.async = true;
+              c.src = 'https://www.smartsuppchat.com/loader.js?';
+
+              s.parentNode.insertBefore(c, s);
+            })(document);
+          `}
+        </Script>
       </head>
       <body className="antialiased">
         <SchemaMarkup />
