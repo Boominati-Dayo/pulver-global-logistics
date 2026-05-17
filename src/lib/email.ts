@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
 import connectDB from './mongodb';
-import Settings from './models/Settings';
+import Settings from '@/models/Settings';
 
 interface EmailOptions {
   to: string;
