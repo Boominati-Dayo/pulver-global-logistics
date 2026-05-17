@@ -80,7 +80,7 @@ export default function MapComponent({ origin, destination, currentLocation }: M
         }).addTo(map);
         
         const bounds = L.latLngBounds(latlngs as [number, number][]);
-        map.fitBounds(bounds, { padding: [50, 50] });
+        map.fitBounds(bounds, { padding: [60, 60], maxZoom: 12 });
       } else {
         const latlngs: L.LatLngExpression[] = [originCoords, destCoords];
         L.polyline(latlngs, {
@@ -91,7 +91,7 @@ export default function MapComponent({ origin, destination, currentLocation }: M
         }).addTo(map);
         
         const bounds = L.latLngBounds(latlngs as [number, number][]);
-        map.fitBounds(bounds, { padding: [50, 50] });
+        map.fitBounds(bounds, { padding: [60, 60], maxZoom: 12 });
       }
 
       setLoading(false);

@@ -3,7 +3,7 @@
 import { useState, Suspense, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useTheme } from '@/components/ClientLayout';
-import { FaSearch, FaBox, FaTruck, FaMapMarkerAlt, FaCalendarAlt, FaUser, FaPhone, FaEnvelope, FaCopy, FaCheck, FaSpinner, FaRoute, FaMapPin, FaClock, FaShip, FaInfoCircle, FaShareAlt, FaCheckDouble, FaUndo, FaBan, FaPause, FaArrowRight, FaRuler, FaShippingFast, FaShieldAlt, FaHeadset, FaExclamationTriangle, FaGlobe, FaBolt, FaPlane, FaMap } from 'react-icons/fa';
+import { FaSearch, FaBox, FaTruck, FaMapMarkerAlt, FaCalendarAlt, FaUser, FaPhone, FaEnvelope, FaCopy, FaCheck, FaSpinner, FaRoute, FaMapPin, FaClock, FaShip, FaInfoCircle, FaCheckDouble, FaUndo, FaBan, FaPause, FaArrowRight, FaRuler, FaShippingFast, FaShieldAlt, FaHeadset, FaExclamationTriangle, FaGlobe, FaBolt, FaPlane, FaMap } from 'react-icons/fa';
 import dynamic from 'next/dynamic';
 
 const TrackingMap = dynamic(() => import('@/components/TrackingMap'), { ssr: false });
@@ -39,11 +39,6 @@ function TrackContent() {
       else setError('Shipment not found. Please check your tracking number and try again.');
     } catch { setError('Shipment not found. Please check your tracking number and try again.'); }
     finally { setIsLoading(false); }
-  };
-
-  const handleCopyTracking = () => {
-    navigator.clipboard.writeText(`${window.location.origin}/track?tracking=${trackingNumber}`);
-    setCopied(true); setTimeout(() => setCopied(false), 2000);
   };
 
   const handleSearch = async (e: React.FormEvent) => {
@@ -91,25 +86,11 @@ function TrackContent() {
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="text-xl md:text-2xl font-extrabold text-[#1a365d] dark:text-white">{shipment.trackingNumber}</span>
-                  <button onClick={handleCopyTracking} className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors">
+                  <button onClick={() => { navigator.clipboard.writeText(shipment.trackingNumber); setCopied(true); setTimeout(() => setCopied(false), 2000); }} className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors">
                     {copied ? <FaCheck className="text-green-500" /> : <FaCopy className="text-gray-400" />}
                   </button>
                 </div>
               </div>
-              <div className="flex items-center gap-3">
-                <span className="px-4 py-2 rounded-full font-semibold text-white text-sm" style={{ backgroundColor: statusColor }}>
-                  <span className="flex items-center gap-2">
-                    <StatusIconComponent className="text-sm" /> <span>{shipment.status}</span>
-                  </span>
-                </span>
-              </div>
-            </div>
-            <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
-              <button onClick={() => { navigator.clipboard.writeText(`${window.location.origin}/track?tracking=${shipment.trackingNumber}`); alert('Link copied!'); }} className="flex items-center gap-2 px-3 py-2 bg-[#ea580c]/10 text-[#ea580c] rounded-lg text-sm font-medium hover:bg-[#ea580c]/20 transition-colors">
-                <FaShareAlt /> Share
-              </button>
-            </div>
-          </div>
 
           {/* Route Summary */}
           <div className="bg-gradient-to-r from-[#1a365d] to-[#2c5282] rounded-2xl p-5 md:p-6 text-white">
