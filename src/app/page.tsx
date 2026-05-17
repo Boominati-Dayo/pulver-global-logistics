@@ -86,7 +86,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#1a365d] via-[#0f2340] to-[#1a365d] min-h-[650px] flex items-center overflow-hidden pt-[120px]">
+      <section className="relative bg-gradient-to-br from-[#1a365d] via-[#0f2340] to-[#1a365d] min-h-[650px] flex items-center overflow-hidden pt-[60px]">
         <div className="absolute inset-0">
           <img src="/assets/home-hero.webp" alt="SwiftXpress logistics" className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#1a365d]/85 via-transparent to-[#0f2340]/80"></div>
