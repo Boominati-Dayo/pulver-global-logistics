@@ -44,7 +44,7 @@ export default function Accessibility() {
               We welcome your feedback on the accessibility of SXI. If you experience barriers to access, please contact us:
             </p>
             <div className="mt-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-xl">
-              <p className="text-[#1a365d] dark:text-white font-medium">Email: accessibility@swiftxpressinc.com</p>
+              <p className="text-[#1a365d] dark:text-white font-medium">Email: info@swiftxpressinc.com</p>
               <p className="text-[#1a365d] dark:text-white font-medium">Phone: {phone}</p>
             </div>
           </div>

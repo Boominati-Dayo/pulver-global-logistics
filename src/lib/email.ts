@@ -39,12 +39,12 @@ async function getSettings(): Promise<SiteSettings> {
     const settings = await Settings.findOne();
     cachedSettings = {
       phone: settings?.phone || 'Contact us for support',
-      email: settings?.email || process.env.SMTP_USER || 'support@swiftxpressinc.com',
+      email: settings?.email || process.env.SMTP_USER || 'info@swiftxpressinc.com',
     };
   } catch {
     cachedSettings = {
       phone: 'Contact us for support',
-      email: process.env.SMTP_USER || 'support@swiftxpressinc.com',
+      email: process.env.SMTP_USER || 'info@swiftxpressinc.com',
     };
   }
   
@@ -110,7 +110,7 @@ const getBaseTemplate = (content: string, footerContent?: string, settings?: Sit
       <td style="background-color: #f8f8f8; padding: 30px; border-top: 1px solid #e0e0e0; text-align: center;">
         <p style="color: #1a365d; margin: 0; font-weight: 600; font-size: 14px;">SwiftXpress Inc.</p>
         <p style="color: #666; font-size: 12px; margin: 5px 0 0;">Phone: ${settings?.phone || 'Contact for support'}</p>
-        <p style="color: #666; font-size: 12px; margin: 5px 0;">Email: ${settings?.email || 'support@swiftxpressinc.com'}</p>
+        <p style="color: #666; font-size: 12px; margin: 5px 0;">Email: ${settings?.email || 'info@swiftxpressinc.com'}</p>
         <p style="color: #999; font-size: 11px; margin: 15px 0 0;">© ${new Date().getFullYear()} SwiftXpress Inc. All rights reserved.</p>
         ${footerContent || '<p style="color: #999; font-size: 11px; margin: 10px 0 0;">This is an automated message. Please do not reply to this email.</p>'}
       </td>

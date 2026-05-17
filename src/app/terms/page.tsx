@@ -41,7 +41,7 @@ export default function Terms() {
               <h2 className="text-2xl font-bold text-[#1a365d] dark:text-white">Contact Us</h2>
             </div>
             <p className="text-gray-600 dark:text-gray-400 mb-3">Questions about these Terms?</p>
-            <p className="text-[#1a365d] dark:text-white font-medium">Email: legal@swiftxpressinc.com | Phone: {phone}</p>
+            <p className="text-[#1a365d] dark:text-white font-medium">Email: info@swiftxpressinc.com | Phone: {phone}</p>
           </section>
         </div>
       </div>
