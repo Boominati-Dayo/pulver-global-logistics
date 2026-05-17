@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaGlobe } from 'react-icons/fa';
+import { FaPhone, FaEnvelope, FaClock, FaGlobe } from 'react-icons/fa';
 import { useSettings } from './SettingsContext';
 
 export default function Footer() {
@@ -17,7 +17,7 @@ export default function Footer() {
 <div>
             <Image src="/swiftXpress-logo.png" alt="SwiftXpress Inc." width={140} height={40} className="h-10 w-auto mb-4" />
             <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-              Delivering excellence across 50+ countries. Comprehensive logistics solutions with real-time tracking, air freight, sea freight, and express delivery services.
+              Delivering excellence across 12 countries. Comprehensive logistics solutions with real-time tracking, air freight, sea freight, and express delivery services.
             </p>
           </div>
 
@@ -51,10 +51,6 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-semibold uppercase tracking-wider text-[#ea580c] mb-4">Contact Us</h4>
             <div className="space-y-3 text-sm">
-              <div className="flex items-start space-x-3">
-                <FaMapMarkerAlt className="text-[#ea580c] mt-0.5 flex-shrink-0" />
-                <span className="text-gray-300">Las Vegas, NV<br />Serving worldwide</span>
-              </div>
               <div className="flex items-center space-x-3">
                 <FaPhone className="text-[#ea580c] flex-shrink-0" />
                 <a href={`tel:${phone.replace(/\s/g, '')}`} className="text-gray-300 hover:text-[#ea580c] transition-colors">{phone}</a>
@@ -62,10 +58,6 @@ export default function Footer() {
               <div className="flex items-center space-x-3">
                 <FaEnvelope className="text-[#ea580c] flex-shrink-0" />
                 <a href={`mailto:${email}`} className="text-gray-300 hover:text-[#ea580c] transition-colors text-sm">{email}</a>
-              </div>
-              <div className="flex items-center space-x-3">
-                <FaClock className="text-[#ea580c] flex-shrink-0" />
-                <span className="text-gray-300">Mon-Sat: 8AM - 10PM EST</span>
               </div>
             </div>
           </div>

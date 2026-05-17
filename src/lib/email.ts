@@ -1,4 +1,6 @@
 import nodemailer from 'nodemailer';
+import connectDB from './mongodb';
+import Settings from './models/Settings';
 
 interface EmailOptions {
   to: string;
@@ -20,6 +22,37 @@ interface TrackingEmailData {
   carrier?: string;
   shipmentMode?: string;
   totalFreight?: string;
+}
+
+interface SiteSettings {
+  phone: string;
+  email: string;
+}
+
+let cachedSettings: SiteSettings | null = null;
+
+async function getSettings(): Promise<SiteSettings> {
+  if (cachedSettings) return cachedSettings;
+  
+  try {
+    await connectDB();
+    const settings = await Settings.findOne();
+    cachedSettings = {
+      phone: settings?.phone || 'Contact us for support',
+      email: settings?.email || process.env.SMTP_USER || 'support@swiftxpressinc.com',
+    };
+  } catch {
+    cachedSettings = {
+      phone: 'Contact us for support',
+      email: process.env.SMTP_USER || 'support@swiftxpressinc.com',
+    };
+  }
+  
+  return cachedSettings;
+}
+
+export function clearSettingsCache() {
+  cachedSettings = null;
 }
 
 const transporter = nodemailer.createTransport({
@@ -52,7 +85,7 @@ const getTrackingURL = (trackingNumber: string) => {
   return `${baseURL}/track?tracking=${trackingNumber}`;
 };
 
-const getBaseTemplate = (content: string, footerContent?: string) => `
+const getBaseTemplate = (content: string, footerContent?: string, settings?: SiteSettings) => `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,8 +109,8 @@ const getBaseTemplate = (content: string, footerContent?: string) => `
     <tr>
       <td style="background-color: #f8f8f8; padding: 30px; border-top: 1px solid #e0e0e0; text-align: center;">
         <p style="color: #1a365d; margin: 0; font-weight: 600; font-size: 14px;">SwiftXpress Inc.</p>
-        <p style="color: #666; font-size: 12px; margin: 5px 0 0;">Las Vegas, NV, USA | Phone: +1(702)123-4567</p>
-        <p style="color: #666; font-size: 12px; margin: 5px 0;">Email: info@swiftxpressinc.com</p>
+        <p style="color: #666; font-size: 12px; margin: 5px 0 0;">Phone: ${settings?.phone || 'Contact for support'}</p>
+        <p style="color: #666; font-size: 12px; margin: 5px 0;">Email: ${settings?.email || 'support@swiftxpressinc.com'}</p>
         <p style="color: #999; font-size: 11px; margin: 15px 0 0;">© ${new Date().getFullYear()} SwiftXpress Inc. All rights reserved.</p>
         ${footerContent || '<p style="color: #999; font-size: 11px; margin: 10px 0 0;">This is an automated message. Please do not reply to this email.</p>'}
       </td>
@@ -97,8 +130,10 @@ const getStatusColor = (status: string) => {
 };
 
 export async function sendShipperEmail(data: TrackingEmailData): Promise<void> {
+  const settings = await getSettings();
   const trackingURL = getTrackingURL(data.trackingNumber);
   const statusColor = getStatusColor(data.status);
+  const supportEmail = settings.email;
   
   const html = getBaseTemplate(`
     <h2 style="color: #1a365d; margin: 0 0 20px; font-size: 20px;">Dear ${data.shipperName},</h2>
@@ -142,9 +177,9 @@ export async function sendShipperEmail(data: TrackingEmailData): Promise<void> {
     </div>
     
     <p style="color: #666; font-size: 13px; line-height: 1.6;">
-      Need help? Contact our support team at <a href="mailto:info@swiftxpressinc.com" style="color: #ea580c;">info@swiftxpressinc.com</a> or call +1(786)123-4567.
+      Need help? Contact our support team at <a href="mailto:${supportEmail}" style="color: #ea580c;">${supportEmail}</a>.
     </p>
-  `);
+  `, undefined, settings);
 
   await sendEmail({
     to: data.shipperEmail,
@@ -154,8 +189,10 @@ export async function sendShipperEmail(data: TrackingEmailData): Promise<void> {
 }
 
 export async function sendReceiverEmail(data: TrackingEmailData): Promise<void> {
+  const settings = await getSettings();
   const trackingURL = getTrackingURL(data.trackingNumber);
   const statusColor = getStatusColor(data.status);
+  const supportEmail = settings.email;
   
   const html = getBaseTemplate(`
     <h2 style="color: #1a365d; margin: 0 0 20px; font-size: 20px;">Hello ${data.receiverName},</h2>
@@ -199,9 +236,9 @@ export async function sendReceiverEmail(data: TrackingEmailData): Promise<void> 
     </div>
     
     <p style="color: #666; font-size: 13px; line-height: 1.6;">
-      Questions about your delivery? Contact us at <a href="mailto:info@swiftxpressinc.com" style="color: #ea580c;">info@swiftxpressinc.com</a>.
+      Questions about your delivery? Contact us at <a href="mailto:${supportEmail}" style="color: #ea580c;">${supportEmail}</a>.
     </p>
-  `);
+  `, undefined, settings);
 
   await sendEmail({
     to: data.receiverEmail,
@@ -211,6 +248,7 @@ export async function sendReceiverEmail(data: TrackingEmailData): Promise<void> 
 }
 
 export async function sendStatusUpdateEmail(data: TrackingEmailData): Promise<void> {
+  const settings = await getSettings();
   const statusColor = getStatusColor(data.status);
   const trackingURL = getTrackingURL(data.trackingNumber);
   
@@ -249,7 +287,7 @@ export async function sendStatusUpdateEmail(data: TrackingEmailData): Promise<vo
     <div style="text-align: center; padding: 10px 0 20px;">
       <a href="${trackingURL}" style="display: inline-block; background: #ea580c; color: #ffffff; padding: 14px 35px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 14px;">View Full Tracking →</a>
     </div>
-  `);
+  `, undefined, settings);
 
   await Promise.all([
     sendEmail({
@@ -309,11 +347,13 @@ export async function sendAdminMessage(data: {
   message: string;
   senderName?: string;
 }): Promise<void> {
+  const settings = await getSettings();
   const trackingURL = getTrackingURL(data.trackingNumber);
+  const supportEmail = settings.email;
   
   const html = getBaseTemplate(`
     <div style="background: linear-gradient(135deg, #ea580c 0%, #f97316 100%); padding: 20px; border-radius: 8px; text-align: center; margin-bottom: 25px;">
-      <p style="color: #ffffff; margin: 0; font-weight: 600; font-size: 14px;">Message from SwitftXpress Inc.</p>
+      <p style="color: #ffffff; margin: 0; font-weight: 600; font-size: 14px;">Message from SwiftXpress Inc.</p>
     </div>
     
     <h2 style="color: #1a365d; margin: 0 0 20px; font-size: 20px;">Dear ${data.toName},</h2>
@@ -334,9 +374,9 @@ export async function sendAdminMessage(data: {
     </div>
     
     <p style="color: #666; font-size: 13px; line-height: 1.6; border-top: 1px solid #e0e0e0; padding-top: 20px;">
-      If you have any questions, please don't hesitate to contact our support team at <a href="mailto:info@swiftxpressinc.com" style="color: #ea580c;">info@swiftxpressinc.com</a> or call +1(786)123-4567.
+      If you have any questions, please don't hesitate to contact our support team at <a href="mailto:${supportEmail}" style="color: #ea580c;">${supportEmail}</a>.
     </p>
-  `, '');
+  `, '', settings);
 
   await sendEmail({
     to: data.toEmail,

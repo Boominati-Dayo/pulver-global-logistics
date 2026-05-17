@@ -36,7 +36,7 @@ const renderStars = (rating: number) => (
 
 const bentoServices = [
   { icon: FaTruck, title: 'Ground Transport', desc: 'Nationwide coverage with reliable delivery.', href: '/services/ground-transport' },
-  { icon: FaPlane, title: 'Air Freight', desc: 'Express air delivery to 50+ countries.', href: '/services/air-freight', highlight: true },
+  { icon: FaPlane, title: 'Air Freight', desc: 'Express air delivery to 12 countries.', href: '/services/air-freight', highlight: true },
   { icon: FaShip, title: 'Sea Freight', desc: 'Cost-effective ocean cargo solutions.', href: '/services/sea-freight' },
   { icon: FaWarehouse, title: 'Warehousing', desc: 'Secure storage and distribution.', href: '/services/warehousing' },
   { icon: FaBolt, title: 'Express Delivery', desc: 'Same-day and next-day options.', href: '/services/express-delivery' },

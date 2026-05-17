@@ -3,7 +3,10 @@
 import { useState, Suspense, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useTheme } from '@/components/ClientLayout';
-import { FaSearch, FaBox, FaTruck, FaMapMarkerAlt, FaCalendarAlt, FaUser, FaPhone, FaEnvelope, FaCopy, FaCheck, FaSpinner, FaRoute, FaMapPin, FaClock, FaShip, FaInfoCircle, FaShareAlt, FaCheckDouble, FaUndo, FaBan, FaPause, FaArrowRight, FaRuler, FaShippingFast, FaShieldAlt, FaHeadset, FaExclamationTriangle, FaGlobe, FaBolt, FaPlane } from 'react-icons/fa';
+import { FaSearch, FaBox, FaTruck, FaMapMarkerAlt, FaCalendarAlt, FaUser, FaPhone, FaEnvelope, FaCopy, FaCheck, FaSpinner, FaRoute, FaMapPin, FaClock, FaShip, FaInfoCircle, FaShareAlt, FaCheckDouble, FaUndo, FaBan, FaPause, FaArrowRight, FaRuler, FaShippingFast, FaShieldAlt, FaHeadset, FaExclamationTriangle, FaGlobe, FaBolt, FaPlane, FaMap } from 'react-icons/fa';
+import dynamic from 'next/dynamic';
+
+const TrackingMap = dynamic(() => import('@/components/TrackingMap'), { ssr: false });
 
 const STATUS_ICONS: Record<string, any> = { pending: FaClock, 'picked up': FaBox, 'in transit': FaTruck, 'out for delivery': FaMapPin, delivered: FaCheckDouble, delayed: FaBan, exception: FaExclamationTriangle, 'on hold': FaPause, returned: FaUndo };
 const STATUS_COLORS: Record<string, string> = { pending: '#f59e0b', 'picked up': '#a855f7', 'in transit': '#2c5282', 'out for delivery': '#0ea5e9', delivered: '#ea580c', delayed: '#ef4444', exception: '#f97316', 'on hold': '#eab308', returned: '#6b7280' };
@@ -127,6 +130,18 @@ function TrackContent() {
             </div>
           </div>
 
+          {/* Live Map */}
+          {shipment.showLiveMap && (
+            <div className="bg-white dark:bg-gray-800 rounded-2xl p-5 md:p-6 shadow-lg">
+              <h2 className="text-lg font-bold text-[#1a365d] dark:text-white mb-4 flex items-center gap-2"><FaMap className="text-[#ea580c]" /> Live Shipment Map</h2>
+              <TrackingMap
+                origin={shipment.origin}
+                destination={shipment.destination}
+                currentLocation={shipment.currentLocation}
+              />
+            </div>
+          )}
+
           {/* Progress Timeline */}
           <div className="bg-white dark:bg-gray-800 rounded-2xl p-5 md:p-6 shadow-lg">
             <h2 className="text-lg font-bold text-[#1a365d] dark:text-white mb-6 flex items-center gap-2"><FaShippingFast className="text-[#ea580c]" /> Shipment Progress</h2>
@@ -140,7 +155,7 @@ function TrackContent() {
                   const isFirst = index === 0;
                   return (
                     <div key={index} className="relative pl-12 md:pl-16">
-                      <div className="absolute left-0 -ml-[5px] md:-ml-[8px] mt-1 w-9 h-9 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-md" style={{ backgroundColor: isFirst ? color : `${color}20`, border: `2px solid ${color}` }}>
+                      <div className="absolute left-0 mt-1 w-9 h-9 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-md" style={{ backgroundColor: isFirst ? color : `${color}20`, border: `2px solid ${color}` }}>
                         <IconComponent className={`text-base md:text-xl`} style={{ color: isFirst ? 'white' : color }} />
                       </div>
                       <div className={`p-3 md:p-4 rounded-xl ${isDarkMode ? 'bg-slate-700' : 'bg-gray-50'}`}>
@@ -153,7 +168,6 @@ function TrackContent() {
                           <span className="font-medium text-gray-900 dark:text-white">{history.location}</span>
                         </div>
                         {history.remarks && <p className="text-sm text-gray-600 dark:text-gray-400 mt-2 italic">"{history.remarks}"</p>}
-                        <p className="text-xs text-gray-400 mt-2">Updated by: {history.updatedBy}</p>
                       </div>
                     </div>
                   );

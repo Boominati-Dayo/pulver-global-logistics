@@ -19,12 +19,16 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
     await connectDB();
     const { trackingNumber } = await params;
     const body = await request.json();
-    const { newHistoryEntry, ...updateFields } = body;
+    const { newHistoryEntry, isEditOperation, ...updateFields } = body;
 
-    let updateQuery = { ...updateFields, lastUpdated: new Date() };
+    let updateQuery;
 
-    if (newHistoryEntry) {
+    if (isEditOperation) {
+      updateQuery = { $set: { ...updateFields, lastUpdated: new Date() } };
+    } else if (newHistoryEntry) {
       updateQuery = { $set: { ...updateFields, lastUpdated: new Date() }, $push: { shipmentHistory: newHistoryEntry } };
+    } else {
+      updateQuery = { $set: { ...updateFields, lastUpdated: new Date() } };
     }
 
     const tracking = await Tracking.findOneAndUpdate({ trackingNumber }, updateQuery, { new: true });

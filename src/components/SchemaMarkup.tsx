@@ -8,7 +8,7 @@ export default function SchemaMarkup() {
         'name': 'SwiftXpress Inc.',
         'url': 'https://swiftxpressinc.com',
         'logo': 'https://swiftxpressinc.com/logo.png',
-        'description': 'Professional logistics and shipping services across 50+ countries. Air freight, sea freight, ground transport, and express delivery.',
+        'description': 'Professional logistics and shipping services across 12 countries. Air freight, sea freight, ground transport, and express delivery.',
         'foundingDate': '2022',
         'knowsAbout': ['Logistics', 'Shipping', 'Air Freight', 'Sea Freight', 'Supply Chain'],
         'areaServed': 'Worldwide',

@@ -244,7 +244,7 @@ export default function Admin() {
       const response = await fetch(`/api/trackings/${selectedTracking.trackingNumber}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
-        body: JSON.stringify(editData),
+        body: JSON.stringify({ ...editData, isEditOperation: true }),
       });
       const data = await response.json();
       if (data.success) {
@@ -523,6 +523,98 @@ export default function Admin() {
                 </form>
               </>
             )}
+          </div>
+        </div>
+      )}
+
+      {showSettings && <SiteSettingsModal onClose={() => setShowSettings(false)} />}
+
+      {showUpdateModal && selectedTracking && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl w-full max-w-lg shadow-2xl">
+            <div className="bg-gradient-to-r from-[#1a365d] to-[#2c5282] px-6 py-4 flex justify-between items-center rounded-t-2xl">
+              <div><h2 className="text-xl font-bold text-white">Update Status</h2><p className="text-white/70 text-sm">{selectedTracking.trackingNumber}</p></div>
+              <button onClick={() => setShowUpdateModal(false)} className="text-white/70 hover:text-white"><FaTimes size={20} /></button>
+            </div>
+            <form onSubmit={handleUpdateStatus} className="p-6 space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Status *</label>
+                <select value={updateData.status} onChange={(e) => setUpdateData({...updateData, status: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" required>
+                  <option value="Pending">Pending</option>
+                  <option value="Picked Up">Picked Up</option>
+                  <option value="In Transit">In Transit</option>
+                  <option value="Out for Delivery">Out for Delivery</option>
+                  <option value="Delivered">Delivered</option>
+                  <option value="Delayed">Delayed</option>
+                  <option value="Exception">Exception</option>
+                  <option value="On Hold">On Hold</option>
+                  <option value="Returned">Returned</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Current Location</label>
+                <input type="text" value={updateData.currentLocation} onChange={(e) => setUpdateData({...updateData, currentLocation: e.target.value})} placeholder="e.g. Chicago, IL" className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Remarks</label>
+                <textarea value={updateData.remarks} onChange={(e) => setUpdateData({...updateData, remarks: e.target.value})} rows={3} placeholder="Optional remarks about this update" className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white resize-none" />
+              </div>
+              <div className="flex justify-end gap-3 pt-4 border-t">
+                <button type="button" onClick={() => setShowUpdateModal(false)} className="px-5 py-2.5 border border-gray-300 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">Cancel</button>
+                <button type="submit" disabled={isUpdating} className="px-6 py-2.5 bg-[#ea580c] text-white font-semibold rounded-lg hover:bg-[#f97316] disabled:opacity-50 flex items-center gap-2">
+                  {isUpdating ? <><FaSpinner className="animate-spin" /> Updating...</> : <><FaCheck /> Update Status</>}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {showEditModal && selectedTracking && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 overflow-y-auto">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl w-full max-w-4xl my-4 shadow-2xl">
+            <div className="bg-gradient-to-r from-[#1a365d] to-[#2c5282] px-6 py-4 flex justify-between items-center sticky top-0 z-10 rounded-t-2xl">
+              <div><h2 className="text-xl font-bold text-white">Edit Shipment</h2><p className="text-white/70 text-sm">{selectedTracking.trackingNumber}</p></div>
+              <button onClick={() => setShowEditModal(false)} className="text-white/70 hover:text-white"><FaTimes size={20} /></button>
+            </div>
+            <form onSubmit={handleEditShipment} className="p-6 space-y-6 max-h-[calc(100vh-120px)] overflow-y-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-4">
+                  <h3 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2"><FaUser className="text-[#ea580c]" /> Shipper</h3>
+                  <div><label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name *</label><input type="text" required value={editData.shipperName} onChange={(e) => setEditData({...editData, shipperName: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" /></div>
+                  <div><label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Address</label><input type="text" value={editData.shipperAddress} onChange={(e) => setEditData({...editData, shipperAddress: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" /></div>
+                  <div><label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Phone</label><input type="tel" value={editData.shipperPhone} onChange={(e) => setEditData({...editData, shipperPhone: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" /></div>
+                  <div><label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label><input type="email" value={editData.shipperEmail} onChange={(e) => setEditData({...editData, shipperEmail: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" /></div>
+                </div>
+                <div className="space-y-4">
+                  <h3 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2"><FaBox className="text-[#ea580c]" /> Receiver</h3>
+                  <div><label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name *</label><input type="text" required value={editData.receiverName} onChange={(e) => setEditData({...editData, receiverName: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" /></div>
+                  <div><label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Address</label><input type="text" value={editData.receiverAddress} onChange={(e) => setEditData({...editData, receiverAddress: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" /></div>
+                  <div><label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Phone</label><input type="tel" value={editData.receiverPhone} onChange={(e) => setEditData({...editData, receiverPhone: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" /></div>
+                  <div><label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label><input type="email" value={editData.receiverEmail} onChange={(e) => setEditData({...editData, receiverEmail: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" /></div>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <div><label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Origin *</label><input type="text" required value={editData.origin} onChange={(e) => setEditData({...editData, origin: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" /></div>
+                <div><label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Destination *</label><input type="text" required value={editData.destination} onChange={(e) => setEditData({...editData, destination: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" /></div>
+                <div><label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Carrier</label><input type="text" value={editData.carrier} onChange={(e) => setEditData({...editData, carrier: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" /></div>
+                <div><label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Mode</label><select value={editData.shipmentMode} onChange={(e) => setEditData({...editData, shipmentMode: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white"><option value="Air">Air</option><option value="Sea">Sea</option><option value="Road">Road</option></select></div>
+                <div><label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Expected Delivery</label><input type="date" value={editData.expectedDeliveryDate} onChange={(e) => setEditData({...editData, expectedDeliveryDate: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" /></div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Show Live Map</label>
+                  <label className="flex items-center gap-2 mt-3 cursor-pointer">
+                    <input type="checkbox" checked={editData.showLiveMap} onChange={(e) => setEditData({...editData, showLiveMap: e.target.checked})} className="w-5 h-5 rounded border-gray-300 text-[#ea580c] focus:ring-[#ea580c]" />
+                    <span className="text-sm text-gray-700 dark:text-gray-300">Enable map on tracking page</span>
+                  </label>
+                </div>
+              </div>
+              <div className="flex justify-end gap-3 pt-4 border-t">
+                <button type="button" onClick={() => setShowEditModal(false)} className="px-5 py-2.5 border border-gray-300 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">Cancel</button>
+                <button type="submit" disabled={isEditing} className="px-6 py-2.5 bg-[#1a365d] text-white font-semibold rounded-lg hover:bg-[#2c5282] disabled:opacity-50 flex items-center gap-2">
+                  {isEditing ? <><FaSpinner className="animate-spin" /> Saving...</> : <><FaCheck /> Save Changes</>}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}
