@@ -309,7 +309,7 @@ export default function Admin() {
             <div className="text-center py-12 text-gray-500 dark:text-gray-400">No shipments found</div>
           ) : filteredTrackings.map((tracking) => (
             <div key={tracking._id} className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm">
-              <div className="flex justify-between items-start mb-3">
+              <div className="flex flex-col md:flex-row justify-between items-start mb-3">
                 <div>
                   <p className="font-bold text-[#ea580c] dark:text-[#f97316] text-lg">{tracking.trackingNumber}</p>
                   <p className="text-xs text-gray-500">{tracking.origin} → {tracking.destination}</p>
