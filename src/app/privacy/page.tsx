@@ -40,7 +40,7 @@ export default function Privacy() {
               <h2 className="text-2xl font-bold text-[#1a365d] dark:text-white">Contact Us</h2>
             </div>
             <p className="text-gray-600 dark:text-gray-400 mb-3">Questions about this Privacy Policy?</p>
-            <p className="text-[#1a365d] dark:text-white font-medium">Email: {email} | Phone: {phone} | Address: Las Vegas, NV</p>
+            <p className="text-[#1a365d] dark:text-white font-medium">Email: {email} | Phone: {phone} </p>
           </section>
         </div>
       </div>

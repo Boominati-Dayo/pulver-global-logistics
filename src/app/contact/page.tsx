@@ -50,7 +50,7 @@ export default function Contact() {
             </div>
             <div className="space-y-5">
               {[
-                { icon: FaMapMarkerAlt, title: 'Our Office', content: 'Las Vegas, NV\nUnited States' },
+                
                 { icon: FaPhone, title: 'Phone', content: phone },
                 { icon: FaEnvelope, title: 'Email', content: email },
                 { icon: FaClock, title: 'Business Hours', content: 'Mon-Sat: 8AM - 10PM EST\nSun: Emergency only' },
