@@ -1,10 +1,12 @@
 'use client';
 
 import { useTheme } from '@/components/ClientLayout';
+import { useSettings } from '@/components/SettingsContext';
 import { FaShieldAlt, FaUserShield, FaLock, FaDatabase, FaCookie, FaExchangeAlt, FaEnvelope } from 'react-icons/fa';
 
 export default function Privacy() {
   const { isDarkMode } = useTheme();
+  const { phone, email } = useSettings();
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
@@ -38,7 +40,7 @@ export default function Privacy() {
               <h2 className="text-2xl font-bold text-[#1a365d] dark:text-white">Contact Us</h2>
             </div>
             <p className="text-gray-600 dark:text-gray-400 mb-3">Questions about this Privacy Policy?</p>
-            <p className="text-[#1a365d] dark:text-white font-medium">Email: privacy@swiftxpressinc.com | Phone: +1 (234) 567-890 | Address: Las Vegas, NV</p>
+            <p className="text-[#1a365d] dark:text-white font-medium">Email: {email} | Phone: {phone} | Address: Las Vegas, NV</p>
           </section>
         </div>
       </div>

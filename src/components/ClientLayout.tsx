@@ -3,6 +3,7 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import { SettingsProvider } from './SettingsContext';
 
 interface ThemeContextType {
   isDarkMode: boolean;
@@ -39,12 +40,14 @@ export default function ClientLayout({ children }: { children: ReactNode }) {
   };
 
   return (
-    <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
-      <div className="flex flex-col min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-        <Navbar />
-        <main className="flex-grow">{children}</main>
-        <Footer />
-      </div>
-    </ThemeContext.Provider>
+    <SettingsProvider>
+      <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
+        <div className="flex flex-col min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+          <Navbar />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+        </div>
+      </ThemeContext.Provider>
+    </SettingsProvider>
   );
 }

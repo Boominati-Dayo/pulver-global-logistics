@@ -35,7 +35,7 @@ const transporter = nodemailer.createTransport({
 export async function sendEmail(options: EmailOptions): Promise<void> {
   try {
     await transporter.sendMail({
-      from: `"Global Express Logistics (GEL)" <${process.env.SMTP_USER}>`,
+      from: `"SwiftXpress Inc." <${process.env.SMTP_USER}>`,
       to: options.to,
       subject: options.subject,
       html: options.html,
@@ -48,7 +48,7 @@ export async function sendEmail(options: EmailOptions): Promise<void> {
 }
 
 const getTrackingURL = (trackingNumber: string) => {
-  const baseURL = process.env.NEXT_PUBLIC_SITE_URL || 'https://globalexpresslogistics.com';
+  const baseURL = process.env.NEXT_PUBLIC_SITE_URL || 'https://swiftxpressinc.com';
   return `${baseURL}/track?tracking=${trackingNumber}`;
 };
 
@@ -58,14 +58,14 @@ const getBaseTemplate = (content: string, footerContent?: string) => `
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Global Express Logistics (GEL)</title>
+  <title>SwiftXpress Inc.</title>
 </head>
 <body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f5f5;">
   <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width: 600px; margin: 0 auto; background-color: #ffffff;">
     <tr>
       <td style="background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%); padding: 24px 30px; text-align: center;">
-        <h1 style="color: #ea580c; margin: 0; font-size: 22px; font-weight: 700;">Global Express Logistics</h1>
-        <p style="color: rgba(255,255,255,0.9); margin: 5px 0 0; font-size: 12px;">Connecting the World Since 2005</p>
+        <h1 style="color: #ea580c; margin: 0; font-size: 22px; font-weight: 700;">SwiftXpress Inc.</h1>
+        <p style="color: rgba(255,255,255,0.9); margin: 5px 0 0; font-size: 12px;">Delivering Excellence Since 2022</p>
       </td>
     </tr>
     <tr>
@@ -75,10 +75,10 @@ const getBaseTemplate = (content: string, footerContent?: string) => `
     </tr>
     <tr>
       <td style="background-color: #f8f8f8; padding: 30px; border-top: 1px solid #e0e0e0; text-align: center;">
-        <p style="color: #1a365d; margin: 0; font-weight: 600; font-size: 14px;">Global Express Logistics (GEL)</p>
+        <p style="color: #1a365d; margin: 0; font-weight: 600; font-size: 14px;">SwiftXpress Inc.</p>
         <p style="color: #666; font-size: 12px; margin: 5px 0 0;">Las Vegas, NV, USA | Phone: +1(702)123-4567</p>
-        <p style="color: #666; font-size: 12px; margin: 5px 0;">Email: info@globalexpresslogistics.com</p>
-        <p style="color: #999; font-size: 11px; margin: 15px 0 0;">© ${new Date().getFullYear()} Global Express Logistics (GEL). All rights reserved.</p>
+        <p style="color: #666; font-size: 12px; margin: 5px 0;">Email: info@swiftxpressinc.com</p>
+        <p style="color: #999; font-size: 11px; margin: 15px 0 0;">© ${new Date().getFullYear()} SwiftXpress Inc. All rights reserved.</p>
         ${footerContent || '<p style="color: #999; font-size: 11px; margin: 10px 0 0;">This is an automated message. Please do not reply to this email.</p>'}
       </td>
     </tr>
@@ -142,7 +142,7 @@ export async function sendShipperEmail(data: TrackingEmailData): Promise<void> {
     </div>
     
     <p style="color: #666; font-size: 13px; line-height: 1.6;">
-      Need help? Contact our support team at <a href="mailto:info@globalexpresslogistics.com" style="color: #ea580c;">info@globalexpresslogistics.com</a> or call +1(786)123-4567.
+      Need help? Contact our support team at <a href="mailto:info@swiftxpressinc.com" style="color: #ea580c;">info@swiftxpressinc.com</a> or call +1(786)123-4567.
     </p>
   `);
 
@@ -199,7 +199,7 @@ export async function sendReceiverEmail(data: TrackingEmailData): Promise<void> 
     </div>
     
     <p style="color: #666; font-size: 13px; line-height: 1.6;">
-      Questions about your delivery? Contact us at <a href="mailto:info@globalexpresslogistics.com" style="color: #ea580c;">info@globalexpresslogistics.com</a>.
+      Questions about your delivery? Contact us at <a href="mailto:info@swiftxpressinc.com" style="color: #ea580c;">info@swiftxpressinc.com</a>.
     </p>
   `);
 
@@ -313,7 +313,7 @@ export async function sendAdminMessage(data: {
   
   const html = getBaseTemplate(`
     <div style="background: linear-gradient(135deg, #ea580c 0%, #f97316 100%); padding: 20px; border-radius: 8px; text-align: center; margin-bottom: 25px;">
-      <p style="color: #ffffff; margin: 0; font-weight: 600; font-size: 14px;">Message from Global Express Logistics (GEL)</p>
+      <p style="color: #ffffff; margin: 0; font-weight: 600; font-size: 14px;">Message from SwitftXpress Inc.</p>
     </div>
     
     <h2 style="color: #1a365d; margin: 0 0 20px; font-size: 20px;">Dear ${data.toName},</h2>
@@ -322,7 +322,7 @@ export async function sendAdminMessage(data: {
       ${data.message}
     </p>
     
-    ${data.senderName ? `<p style="color: #666; font-size: 13px; margin: 0 0 25px;">— ${data.senderName}, GEL Support Team</p>` : ''}
+    ${data.senderName ? `<p style="color: #666; font-size: 13px; margin: 0 0 25px;">— ${data.senderName}, SwiftXpress Inc. Support Team</p>` : ''}
     
     <div style="background: #f8f8f8; border-radius: 8px; margin-bottom: 25px; padding: 15px; text-align: center;">
       <p style="color: #888; margin: 0 0 5px; font-size: 11px;">REFERENCE</p>
@@ -334,7 +334,7 @@ export async function sendAdminMessage(data: {
     </div>
     
     <p style="color: #666; font-size: 13px; line-height: 1.6; border-top: 1px solid #e0e0e0; padding-top: 20px;">
-      If you have any questions, please don't hesitate to contact our support team at <a href="mailto:info@globalexpresslogistics.com" style="color: #ea580c;">info@globalexpresslogistics.com</a> or call +1(786)123-4567.
+      If you have any questions, please don't hesitate to contact our support team at <a href="mailto:info@swiftxpressinc.com" style="color: #ea580c;">info@swiftxpressinc.com</a> or call +1(786)123-4567.
     </p>
   `, '');
 

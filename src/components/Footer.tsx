@@ -3,8 +3,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaGlobe } from 'react-icons/fa';
+import { useSettings } from './SettingsContext';
 
 export default function Footer() {
+  const { phone, email } = useSettings();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -55,11 +57,11 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-3">
                 <FaPhone className="text-[#ea580c] flex-shrink-0" />
-                <a href="tel:+1234567890" className="text-gray-300 hover:text-[#ea580c] transition-colors">+1 (234) 567-890</a>
+                <a href={`tel:${phone.replace(/\s/g, '')}`} className="text-gray-300 hover:text-[#ea580c] transition-colors">{phone}</a>
               </div>
               <div className="flex items-center space-x-3">
                 <FaEnvelope className="text-[#ea580c] flex-shrink-0" />
-                <a href="mailto:info@swiftxpressinc.com" className="text-gray-300 hover:text-[#ea580c] transition-colors text-sm">info@swiftxpressinc.com</a>
+                <a href={`mailto:${email}`} className="text-gray-300 hover:text-[#ea580c] transition-colors text-sm">{email}</a>
               </div>
               <div className="flex items-center space-x-3">
                 <FaClock className="text-[#ea580c] flex-shrink-0" />

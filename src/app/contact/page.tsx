@@ -2,10 +2,12 @@
 
 import { useState } from 'react';
 import { useTheme } from '@/components/ClientLayout';
+import { useSettings } from '@/components/SettingsContext';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock, FaUser, FaEnvelopeOpenText, FaCheckCircle, FaSpinner, FaPlane, FaShip, FaTruck, FaWarehouse, FaRocket } from 'react-icons/fa';
 
 export default function Contact() {
   const { isDarkMode } = useTheme();
+  const { phone, email } = useSettings();
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', subject: '', service: '', message: '' });
   const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -49,8 +51,8 @@ export default function Contact() {
             <div className="space-y-5">
               {[
                 { icon: FaMapMarkerAlt, title: 'Our Office', content: 'Las Vegas, NV\nUnited States' },
-                { icon: FaPhone, title: 'Phone', content: '+1 (234) 567-890' },
-                { icon: FaEnvelope, title: 'Email', content: 'info@swiftxpressinc.com' },
+                { icon: FaPhone, title: 'Phone', content: phone },
+                { icon: FaEnvelope, title: 'Email', content: email },
                 { icon: FaClock, title: 'Business Hours', content: 'Mon-Sat: 8AM - 10PM EST\nSun: Emergency only' },
               ].map((item, index) => (
                 <div key={index} className="flex items-start gap-4">

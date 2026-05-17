@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { getStatusBg, getStatusText } from '@/lib/statusUtils';
-import { FaSearch, FaPlus, FaTrash, FaEnvelope, FaTimes, FaSpinner, FaCheck, FaUser, FaBox, FaArrowRight, FaCalendar, FaClock, FaEdit, FaMapMarkerAlt, FaGlobe, FaArrowUp } from 'react-icons/fa';
+import { FaSearch, FaPlus, FaTrash, FaEnvelope, FaTimes, FaSpinner, FaCheck, FaUser, FaBox, FaArrowRight, FaCalendar, FaClock, FaEdit, FaMapMarkerAlt, FaGlobe, FaArrowUp, FaCog } from 'react-icons/fa';
 
 interface Tracking {
   _id: string;
@@ -33,6 +33,7 @@ export default function Admin() {
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [showForm, setShowForm] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
   const [showMessageModal, setShowMessageModal] = useState(false);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
@@ -271,6 +272,9 @@ export default function Admin() {
             <button onClick={() => setShowForm(true)} className="flex items-center gap-2 px-5 py-2.5 bg-[#1a365d] text-white rounded-lg hover:bg-[#2c5282] shadow-lg">
               <FaPlus /> New Shipment
             </button>
+            <button onClick={() => setShowSettings(!showSettings)} className="flex items-center gap-2 px-5 py-2.5 bg-[#ea580c] text-white rounded-lg hover:bg-[#f97316] shadow-lg">
+              <FaCog /> Site Settings
+            </button>
             <button onClick={handleLogout} className="px-5 py-2.5 bg-red-600 text-white rounded-lg hover:bg-red-700">Logout</button>
           </div>
         </div>
@@ -490,116 +494,74 @@ export default function Admin() {
           </div>
         </div>
       )}
+        
+        {showSettings && <SiteSettingsModal onClose={() => setShowSettings(false)} />}
+      </div>
+    </div>
+  );
+}
 
-      {showUpdateModal && selectedTracking && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-2 sm:p-4">
-          <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 md:p-6 w-full max-w-lg shadow-2xl">
-            <div className="flex justify-between items-center mb-4 md:mb-6">
-              <h2 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                <FaEdit className="text-[#ea580c]" /> Update Shipment Status
-              </h2>
-              <button onClick={() => setShowUpdateModal(false)} className="text-gray-500 hover:text-gray-700 dark:text-gray-400">
-                <FaTimes size={20} />
-              </button>
-            </div>
-            <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 md:p-4 mb-4">
-              <p className="text-xs md:text-sm text-gray-500">Tracking: <span className="font-bold text-[#ea580c] dark:text-[#f97316]">{selectedTracking.trackingNumber}</span></p>
-              <p className="text-xs md:text-sm text-gray-500">Route: {selectedTracking.origin} → {selectedTracking.destination}</p>
-            </div>
-            <form onSubmit={handleUpdateStatus} className="space-y-3 md:space-y-4">
-              <div>
-                <label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Status *</label>
-                <select required value={updateData.status} onChange={(e) => setUpdateData({...updateData, status: e.target.value})} className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base">
-                  <option value="Pending">Pending</option>
-                  <option value="Picked Up">Picked Up</option>
-                  <option value="In Transit">In Transit</option>
-                  <option value="Out for Delivery">Out for Delivery</option>
-                  <option value="Delivered">Delivered</option>
-                  <option value="Delayed">Delayed</option>
-                  <option value="Exception">Exception</option>
-                  <option value="On Hold">On Hold</option>
-                  <option value="Returned">Returned</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 flex items-center gap-1">
-                  <FaMapMarkerAlt className="text-[#ea580c]" /> Current Location *
-                </label>
-                <input type="text" required placeholder="Enter current location" value={updateData.currentLocation} onChange={(e) => setUpdateData({...updateData, currentLocation: e.target.value})} className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" />
-              </div>
-              <div>
-                <label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Remarks</label>
-                <textarea rows={2} placeholder="Add any remarks or notes about this update" value={updateData.remarks} onChange={(e) => setUpdateData({...updateData, remarks: e.target.value})} className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white resize-none text-sm md:text-base" />
-              </div>
-              <div className="flex flex-col-reverse sm:flex-row justify-end gap-2 md:gap-3 pt-3 md:pt-4 border-t">
-                <button type="button" onClick={() => setShowUpdateModal(false)} className="px-4 md:px-5 py-2 border border-gray-300 text-gray-700 dark:border-gray-600 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-sm md:text-base">Cancel</button>
-                <button type="submit" disabled={isUpdating} className="px-4 md:px-5 py-2 bg-[#ea580c] text-white rounded-lg disabled:opacity-50 flex items-center justify-center gap-2 text-sm md:text-base hover:bg-[#f97316]">
-                  {isUpdating ? <><FaSpinner className="animate-spin" /> Updating...</> : <><FaCheck /> Update Status</>}
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
+function SiteSettingsModal({ onClose }: { onClose: () => void }) {
+  const [phone, setPhone] = useState('+1 (234) 567-890');
+  const [email, setEmail] = useState('info@swiftxpressinc.com');
+  const [isSaving, setIsSaving] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-      {showEditModal && selectedTracking && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 overflow-y-auto">
-          <div className="bg-white dark:bg-gray-800 rounded-2xl w-full max-w-2xl my-4 shadow-2xl">
-            <div className="bg-gradient-to-r from-purple-600 to-purple-800 px-6 py-4 flex justify-between items-center sticky top-0">
-              <div><h2 className="text-xl font-bold text-white">Edit Shipment</h2><p className="text-white/70 text-sm">Update shipment details</p></div>
-              <button onClick={() => setShowEditModal(false)} className="text-white/70 hover:text-white"><FaTimes size={24} /></button>
-            </div>
-            <div className="p-4 md:p-6 max-h-[calc(100vh-160px)] overflow-y-auto">
-              <form onSubmit={handleEditShipment} className="space-y-4 md:space-y-6">
-                <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 md:p-4">
-                  <p className="text-sm text-gray-500">Tracking: <span className="font-bold text-[#ea580c] dark:text-[#f97316]">{selectedTracking.trackingNumber}</span></p>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Shipper Name *</label><input type="text" required value={editData.shipperName} onChange={(e) => setEditData({...editData, shipperName: e.target.value})} className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
-                  <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Shipper Phone *</label><input type="tel" required value={editData.shipperPhone} onChange={(e) => setEditData({...editData, shipperPhone: e.target.value})} className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
-                  <div className="md:col-span-2"><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Shipper Address *</label><input type="text" required value={editData.shipperAddress} onChange={(e) => setEditData({...editData, shipperAddress: e.target.value})} className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
-                  <div className="md:col-span-2"><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Shipper Email *</label><input type="email" required value={editData.shipperEmail} onChange={(e) => setEditData({...editData, shipperEmail: e.target.value})} className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
-                  
-                  <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Receiver Name *</label><input type="text" required value={editData.receiverName} onChange={(e) => setEditData({...editData, receiverName: e.target.value})} className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
-                  <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Receiver Phone *</label><input type="tel" required value={editData.receiverPhone} onChange={(e) => setEditData({...editData, receiverPhone: e.target.value})} className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
-                  <div className="md:col-span-2"><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Receiver Address *</label><input type="text" required value={editData.receiverAddress} onChange={(e) => setEditData({...editData, receiverAddress: e.target.value})} className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
-                  <div className="md:col-span-2"><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Receiver Email *</label><input type="email" required value={editData.receiverEmail} onChange={(e) => setEditData({...editData, receiverEmail: e.target.value})} className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
-                  
-                  <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Origin *</label><input type="text" required value={editData.origin} onChange={(e) => setEditData({...editData, origin: e.target.value})} className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
-                  <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Destination *</label><input type="text" required value={editData.destination} onChange={(e) => setEditData({...editData, destination: e.target.value})} className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
-                  <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Carrier *</label><input type="text" required value={editData.carrier} onChange={(e) => setEditData({...editData, carrier: e.target.value})} className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
-                  <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Shipment Mode</label><select value={editData.shipmentMode} onChange={(e) => setEditData({...editData, shipmentMode: e.target.value})} className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base"><option value="Air">Air</option><option value="Sea">Sea</option><option value="Road">Road</option></select></div>
-                  <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Expected Delivery *</label><input type="date" required value={editData.expectedDeliveryDate} onChange={(e) => setEditData({...editData, expectedDeliveryDate: e.target.value})} className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
-                  <div className="md:col-span-2">
-                    <label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Live Tracking Map</label>
-                    <div className="flex items-center gap-3 bg-gray-50 dark:bg-gray-700 rounded-lg p-3">
-                      <button
-                        type="button"
-                        onClick={() => setEditData({...editData, showLiveMap: !editData.showLiveMap})}
-                        className={`relative inline-flex h-8 w-14 items-center rounded-full transition-colors duration-200 ${editData.showLiveMap ? 'bg-[#ea580c]' : 'bg-gray-300 dark:bg-gray-600'}`}
-                      >
-                        <span className={`inline-block h-6 w-6 transform rounded-full bg-white shadow-md transition-transform duration-200 ${editData.showLiveMap ? 'translate-x-7' : 'translate-x-1'}`} />
-                      </button>
-                      <div>
-                        <p className="font-medium text-gray-900 dark:text-white text-sm">{editData.showLiveMap ? 'Enabled' : 'Disabled'}</p>
-                        <p className="text-xs text-gray-500">Show live map on tracking page</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="flex flex-col-reverse md:flex-row justify-end gap-3 pt-4 border-t">
-                  <button type="button" onClick={() => setShowEditModal(false)} className="px-5 py-2.5 border border-gray-300 text-gray-700 dark:border-gray-600 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-sm md:text-base">Cancel</button>
-                  <button type="submit" disabled={isEditing} className="px-6 py-2.5 bg-purple-600 text-white rounded-lg disabled:opacity-50 flex items-center justify-center gap-2 text-sm md:text-base hover:bg-purple-700">
-                    {isEditing ? <><FaSpinner className="animate-spin" /> Saving...</> : <><FaCheck /> Save Changes</>}
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
+  useEffect(() => {
+    fetch('/api/settings')
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          if (data.data.phone) setPhone(data.data.phone);
+          if (data.data.email) setEmail(data.data.email);
+        }
+      })
+      .finally(() => setIsLoading(false));
+  }, []);
+
+  const handleSave = async () => {
+    setIsSaving(true);
+    try {
+      await fetch('/api/settings', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ key: 'phone', value: phone }),
+      });
+      await fetch('/api/settings', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ key: 'email', value: email }),
+      });
+      toast.success('Settings saved successfully!');
+      onClose();
+      window.location.reload();
+    } catch { toast.error('Failed to save settings'); }
+    finally { setIsSaving(false); }
+  };
+
+  if (isLoading) return <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50"><FaSpinner className="animate-spin text-white text-3xl" /></div>;
+
+  return (
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+      <div className="bg-white dark:bg-gray-800 rounded-2xl w-full max-w-md shadow-2xl">
+        <div className="bg-gradient-to-r from-[#1a365d] to-[#2c5282] px-6 py-4 flex justify-between items-center rounded-t-2xl">
+          <div><h2 className="text-xl font-bold text-white">Site Settings</h2><p className="text-white/70 text-sm">Update contact information</p></div>
+          <button onClick={onClose} className="text-white/70 hover:text-white"><FaTimes size={20} /></button>
         </div>
-      )}
+        <div className="p-6 space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Phone Number</label>
+            <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email Address</label>
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" />
+          </div>
+          <button onClick={handleSave} disabled={isSaving} className="w-full py-3 bg-[#ea580c] text-white font-bold rounded-lg hover:bg-[#f97316] disabled:opacity-50 flex items-center justify-center gap-2">
+            {isSaving ? <><FaSpinner className="animate-spin" /> Saving...</> : 'Save Settings'}
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

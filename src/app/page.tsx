@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useTheme } from '@/components/ClientLayout';
+import { useSettings } from '@/components/SettingsContext';
 import { FaGlobe, FaCheckCircle, FaBox, FaPlane, FaShip, FaTruck, FaWarehouse, FaArrowRight, FaShieldAlt, FaHeadset, FaChartLine, FaStar, FaQuoteLeft, FaClock, FaMapMarkerAlt, FaPhone, FaEnvelope, FaShippingFast, FaUser, FaAward, FaCertificate, FaMedal, FaHandshake, FaLeaf, FaSearch, FaSpinner, FaPaw, FaRocket, FaBolt, FaCog, FaArrowDown, FaLock, FaMapPin, FaAnchor, FaRoute, FaBoxes, FaCheck } from 'react-icons/fa';
 
 const reviews = [
@@ -69,6 +70,7 @@ const deliveryOptions = [
 
 export default function Home() {
   const { isDarkMode } = useTheme();
+  const { phone } = useSettings();
   const router = useRouter();
   const [trackingNumber, setTrackingNumber] = useState('');
   const [isTracking, setIsTracking] = useState(false);
@@ -122,7 +124,7 @@ export default function Home() {
                     {isTracking ? <FaSpinner className="animate-spin" /> : <FaSearch />} {isTracking ? 'Tracking...' : 'Track Now'}
                   </button>
                 </form>
-                <p className="text-white/50 text-sm mt-5 text-center">Or call us: <span className="text-[#ea580c] font-bold">+1 (234) 567-890</span></p>
+                <p className="text-white/50 text-sm mt-5 text-center">Or call us: <span className="text-[#ea580c] font-bold">{phone}</span></p>
               </div>
             </div>
           </div>
@@ -226,7 +228,7 @@ export default function Home() {
             <div>
               <span className="text-[#ea580c] font-semibold text-sm uppercase tracking-wider">Why Choose SXI</span>
               <h2 className="text-3xl md:text-4xl font-bold text-[#1a365d] dark:text-white mt-2 mb-6">
-                Your Trusted Logistics Partner Since 2005
+                Your Trusted Logistics Partner Since 2022
               </h2>
               <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
                 With over two decades of experience, SwiftXpress Inc. has built a reputation for reliability, transparency, and exceptional service. We connect businesses to global markets with efficiency and care.

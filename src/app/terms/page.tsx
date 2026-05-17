@@ -1,10 +1,12 @@
 'use client';
 
 import { useTheme } from '@/components/ClientLayout';
+import { useSettings } from '@/components/SettingsContext';
 import { FaFileContract, FaGavel, FaShippingFast, FaUserCheck, FaDollarSign, FaExclamationTriangle, FaShieldAlt, FaEnvelope } from 'react-icons/fa';
 
 export default function Terms() {
   const { isDarkMode } = useTheme();
+  const { phone } = useSettings();
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
@@ -39,7 +41,7 @@ export default function Terms() {
               <h2 className="text-2xl font-bold text-[#1a365d] dark:text-white">Contact Us</h2>
             </div>
             <p className="text-gray-600 dark:text-gray-400 mb-3">Questions about these Terms?</p>
-            <p className="text-[#1a365d] dark:text-white font-medium">Email: legal@swiftxpressinc.com | Phone: +1 (234) 567-890</p>
+            <p className="text-[#1a365d] dark:text-white font-medium">Email: legal@swiftxpressinc.com | Phone: {phone}</p>
           </section>
         </div>
       </div>

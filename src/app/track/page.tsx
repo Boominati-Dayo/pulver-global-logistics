@@ -182,6 +182,36 @@ function TrackContent() {
             </div>
           </div>
 
+          {/* Package Details */}
+          {shipment.packages && shipment.packages.length > 0 && (
+            <div className="bg-white dark:bg-gray-800 rounded-2xl p-5 md:p-6 shadow-lg">
+              <h2 className="text-lg font-bold text-[#1a365d] dark:text-white mb-4 flex items-center gap-2"><FaBox className="text-[#ea580c]" /> Package Details</h2>
+              <div className="space-y-4">
+                {shipment.packages.map((pkg, index) => (
+                  <div key={index} className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-4 border border-gray-100 dark:border-gray-600">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-sm font-semibold text-[#ea580c]">Package {index + 1}</span>
+                      <span className="text-xs text-gray-500 dark:text-gray-400 bg-gray-200 dark:bg-gray-600 px-2 py-1 rounded-full">{pkg.pieceType}</span>
+                    </div>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                      {[
+                        { label: 'Quantity', value: pkg.quantity },
+                        { label: 'Weight', value: pkg.weight ? `${pkg.weight} kg` : '-' },
+                        { label: 'Dimensions', value: (pkg.length && pkg.width && pkg.height) ? `${pkg.length}x${pkg.width}x${pkg.height} cm` : '-' },
+                        { label: 'Description', value: pkg.description || '-' },
+                      ].map((item, i) => (
+                        <div key={i}>
+                          <p className="text-xs text-gray-500 dark:text-gray-400">{item.label}</p>
+                          <p className="font-medium text-gray-900 dark:text-white text-sm">{item.value}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Contact Info */}
           <div className="grid md:grid-cols-2 gap-4">
             <div className="bg-white dark:bg-gray-800 rounded-2xl p-5 md:p-6 shadow-lg">

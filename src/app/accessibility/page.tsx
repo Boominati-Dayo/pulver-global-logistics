@@ -1,8 +1,11 @@
 'use client';
 
+import { useSettings } from '@/components/SettingsContext';
 import { FaAccessibleIcon, FaWheelchair, FaUniversalAccess, FaCheckCircle } from 'react-icons/fa';
 
 export default function Accessibility() {
+  const { phone } = useSettings();
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <div className="bg-gradient-to-r from-[#1a365d] to-[#2c5282] py-16 text-center pt-[120px]">
@@ -41,8 +44,8 @@ export default function Accessibility() {
               We welcome your feedback on the accessibility of SXI. If you experience barriers to access, please contact us:
             </p>
             <div className="mt-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-xl">
-              <p className="text-[#1a365d] dark:text-white font-medium">Email: accessibility@globalexpresslogistics.com</p>
-              <p className="text-[#1a365d] dark:text-white font-medium">Phone: +1 (234) 567-890</p>
+              <p className="text-[#1a365d] dark:text-white font-medium">Email: accessibility@swiftxpressinc.com</p>
+              <p className="text-[#1a365d] dark:text-white font-medium">Phone: {phone}</p>
             </div>
           </div>
         </div>

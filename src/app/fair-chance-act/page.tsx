@@ -1,8 +1,11 @@
 'use client';
 
+import { useSettings } from '@/components/SettingsContext';
 import { FaBalanceScale, FaUserCheck, FaInfoCircle, FaCheckCircle } from 'react-icons/fa';
 
 export default function FairChanceAct() {
+  const { phone, email } = useSettings();
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <div className="bg-gradient-to-r from-[#1a365d] to-[#2c5282] py-16 text-center pt-[120px]">
@@ -55,7 +58,7 @@ export default function FairChanceAct() {
           <div>
             <h2 className="text-2xl font-bold text-[#1a365d] dark:text-white mb-4">Contact</h2>
             <p className="text-gray-600 dark:text-gray-400">For questions about our fair chance hiring process, contact:</p>
-            <p className="mt-2 text-[#1a365d] dark:text-white font-medium">Email: hr@globalexpresslogistics.com | Phone: +1 (234) 567-890</p>
+            <p className="mt-2 text-[#1a365d] dark:text-white font-medium">Email: {email} | Phone: {phone}</p>
           </div>
         </div>
       </div>

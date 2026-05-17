@@ -5,7 +5,7 @@ import { useTheme } from '@/components/ClientLayout';
 import { FaGlobe, FaAward, FaUsers, FaClock, FaShieldAlt, FaHeadset, FaArrowRight, FaQuoteLeft, FaCheckCircle, FaMedal, FaChartLine, FaPlane, FaRocket } from 'react-icons/fa';
 
 const milestones = [
-  { year: '2005', title: 'Company Founded', desc: 'SwiftXpress Inc. established in Las Vegas, Nevada, USA' },
+  { year: '2022', title: 'Company Founded', desc: 'SwiftXpress Inc. established in Las Vegas, Nevada, USA' },
   { year: '2008', title: 'Domestic Expansion', desc: 'Expanded operations across all 50 US states with next-day delivery' },
   { year: '2012', title: 'International Launch', desc: 'Began serving customers across 25+ countries worldwide' },
   { year: '2016', title: 'Air Freight Hub', desc: 'Opened dedicated air freight hub at Las Vegas McCarran International Airport' },
@@ -21,10 +21,10 @@ const values = [
 ];
 
 const stats = [
-  { icon: FaGlobe, value: '50+', label: 'Countries' },
-  { icon: FaUsers, value: '500+', label: 'Team Members' },
-  { icon: FaClock, value: '24/7', label: 'Support' },
-  { icon: FaAward, value: '98%', label: 'Satisfaction' },
+  { icon: FaGlobe, value: '12', label: 'Countries' },
+  { icon: FaUsers, value: '8', label: 'Team Members' },
+  { icon: FaClock, value: '9AM-6PM', label: 'Mon-Fri Support' },
+  { icon: FaAward, value: '92%', label: 'Satisfaction' },
 ];
 
 export default function About() {
@@ -39,7 +39,7 @@ export default function About() {
         </div>
         <div className="relative max-w-7xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">About SwiftXpress Inc.</h1>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto">Connecting the World Since 2005 — Delivering Excellence Across 50+ Countries</p>
+          <p className="text-xl text-white/80 max-w-3xl mx-auto">Connecting the World Since 2022 — Delivering Excellence Across 12 Countries</p>
         </div>
       </div>
 
@@ -53,7 +53,7 @@ export default function About() {
                 Connecting the World,<br />One Shipment at a Time
               </h2>
               <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                Founded in 2005 in Las Vegas, Nevada, SwiftXpress Inc. has grown from a regional delivery service into a worldwide logistics network. We specialize in domestic and international shipping with a commitment to safe handling of all cargo types.
+                Founded in 2022 in Las Vegas, Nevada, SwiftXpress Inc. has grown from a regional delivery service into a logistics network across 12 countries. We specialize in domestic and international shipping with a commitment to safe handling of all cargo types.
               </p>
               <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
                 We believe that great logistics shouldn't be complicated. Our team works around the clock to ensure your packages arrive safely, on time, and in perfect condition — from small documents to large freight.
@@ -71,7 +71,7 @@ export default function About() {
             <div className="relative">
               <img src="https://images.unsplash.com/photo-1553484771-371a605b060b?auto=format&fit=crop&w=800&q=80" alt="Our mission" className="rounded-3xl shadow-2xl" />
               <div className="absolute -bottom-6 -left-6 bg-gradient-to-br from-[#ea580c] to-[#f97316] rounded-2xl p-6 shadow-xl">
-                <p className="text-4xl font-extrabold text-white">20+</p>
+                <p className="text-4xl font-extrabold text-white">3+</p>
                 <p className="text-white/90 text-sm">Years of Excellence</p>
               </div>
             </div>
