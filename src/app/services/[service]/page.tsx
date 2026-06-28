@@ -12,10 +12,10 @@ const services = {
     price: 'From $29.99/pkg',
     color: 'from-blue-500 to-blue-600',
     accentColor: '#3b82f6',
-    description: 'Fast and reliable air freight services to 12 countries worldwide. When speed matters, Pulver Global Logistics delivers with precision and reliability. Our air freight solutions are designed for businesses and individuals who need time-definite delivery without compromising on safety.',
+    description: 'Fast and reliable air freight services worldwide. When speed matters, Pulver Global Logistics delivers with precision and reliability. Our air freight solutions are designed for businesses and individuals who need time-definite delivery without compromising on safety.',
     heroImage: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80',
     features: [
-      '1-3 day delivery to 12 countries',
+      '1-3 day delivery worldwide',
       'Express and economy options',
       'Customs clearance included',
       'Airport-to-airport and door-to-door',

@@ -17,7 +17,7 @@ export default function Footer() {
 <div>
             <Image src="/swiftXpress-logo.png" alt="Pulver Global Logistics" width={140} height={40} className="h-10 w-auto mb-4" />
             <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-              Delivering excellence across 12 countries. Comprehensive logistics solutions with real-time tracking, air freight, sea freight, and express delivery services.
+               Delivering excellence worldwide. Comprehensive logistics solutions with real-time tracking, air freight, sea freight, and express delivery services.
             </p>
           </div>
 

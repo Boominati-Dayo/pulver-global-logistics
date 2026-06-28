@@ -8,7 +8,7 @@ export default function SchemaMarkup() {
         'name': 'Pulver Global Logistics',
         'url': 'https://pulvergloballogistics.com',
         'logo': 'https://pulvergloballogistics.com/logo.png',
-        'description': 'Professional logistics and shipping services across 12 countries. Air freight, sea freight, ground transport, and express delivery.',
+        'description': 'Professional logistics and shipping services worldwide. Air freight, sea freight, ground transport, and express delivery.',
         'foundingDate': '2022',
         'knowsAbout': ['Logistics', 'Shipping', 'Air Freight', 'Sea Freight', 'Supply Chain'],
         'areaServed': 'Worldwide',

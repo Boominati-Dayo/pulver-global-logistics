@@ -36,7 +36,7 @@ const renderStars = (rating: number) => (
 
 const bentoServices = [
   { icon: FaTruck, title: 'Ground Transport', desc: 'Global coverage with reliable delivery.', href: '/services/ground-transport' },
-  { icon: FaPlane, title: 'Air Freight', desc: 'Express air delivery to 12 countries.', href: '/services/air-freight', highlight: true },
+  { icon: FaPlane, title: 'Air Freight', desc: 'Express air delivery worldwide.', href: '/services/air-freight', highlight: true },
   { icon: FaShip, title: 'Sea Freight', desc: 'Cost-effective ocean cargo solutions.', href: '/services/sea-freight' },
   { icon: FaWarehouse, title: 'Warehousing', desc: 'Secure storage and distribution.', href: '/services/warehousing' },
   { icon: FaBolt, title: 'Express Delivery', desc: 'Same-day and next-day options.', href: '/services/express-delivery' },
@@ -152,7 +152,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { value: '12', label: 'Countries Served' },
+              { value: '50+', label: 'Countries Served' },
               { value: '4', label: 'Years in Business' },
               { value: '18K+', label: 'Packages Delivered' },
               { value: '24/7', label: '24/7 Support' },

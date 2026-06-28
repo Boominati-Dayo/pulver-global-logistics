@@ -8,19 +8,19 @@ const milestones = [
   { year: '2022', title: 'Company Founded', desc: 'Pulver Global Logistics established with a global vision' },
   { year: '2023', title: 'Global Launch', desc: 'Started serving customers worldwide with standard ground shipping' },
   { year: '2024', title: 'Air Freight Added', desc: 'Launched air freight services for faster domestic deliveries' },
-  { year: '2025', title: 'International Expansion', desc: 'Expanded to serve 12 countries worldwide with reliable logistics' },
+  { year: '2025', title: 'International Expansion', desc: 'Expanded to serve clients worldwide with reliable logistics' },
   { year: '2026', title: 'Growing Strong', desc: 'Serving businesses and individuals with 18K+ successful deliveries' },
 ];
 
 const values = [
   { icon: FaRocket, title: 'Speed', desc: 'We prioritize fast, efficient delivery without compromising reliability.' },
   { icon: FaShieldAlt, title: 'Reliability', desc: 'Your shipments arrive safely and on time, every time.' },
-  { icon: FaGlobe, title: 'Global Reach', desc: 'Serving 12 countries with a network of trusted partners.' },
+  { icon: FaGlobe, title: 'Global Reach', desc: 'Worldwide coverage with a network of trusted partners.' },
   { icon: FaUsers, title: 'Customer First', desc: 'Dedicated support team available Mon-Fri to solve your logistics challenges.' },
 ];
 
 const stats = [
-  { icon: FaGlobe, value: '12', label: 'Countries' },
+  { icon: FaGlobe, value: '50+', label: 'Countries' },
   { icon: FaUsers, value: '8', label: 'Team Members' },
   { icon: FaClock, value: '9AM-6PM', label: 'Mon-Fri Support' },
   { icon: FaAward, value: '92%', label: 'Satisfaction' },
