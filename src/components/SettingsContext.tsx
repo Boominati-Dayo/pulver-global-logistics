@@ -10,15 +10,15 @@ interface SettingsContextType {
 }
 
 const SettingsContext = createContext<SettingsContextType>({
-  phone: '+1 (234) 567-890',
-  email: 'info@swiftxpressinc.com',
+  phone: '+1 (555) 123-4567',
+  email: 'info@pulvergloballogistics.com',
   loading: true,
   refreshSettings: () => {},
 });
 
 export function SettingsProvider({ children }: { children: ReactNode }) {
-  const [phone, setPhone] = useState('+1 (234) 567-890');
-  const [email, setEmail] = useState('info@swiftxpressinc.com');
+  const [phone, setPhone] = useState('+1 (555) 123-4567');
+  const [email, setEmail] = useState('info@pulvergloballogistics.com');
   const [loading, setLoading] = useState(true);
 
   const fetchSettings = async () => {

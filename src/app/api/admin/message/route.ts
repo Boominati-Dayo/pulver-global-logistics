@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
       trackingNumber,
       subject: subject || `Message regarding shipment ${trackingNumber}`,
       message,
-      senderName: senderName || 'SwiftXpress Inc. Team',
+      senderName: senderName || 'Pulver Global Logistics Team',
     });
 
     return NextResponse.json({ success: true, message: 'Message sent successfully' });

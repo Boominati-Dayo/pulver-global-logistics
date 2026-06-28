@@ -53,8 +53,8 @@ export default function Navbar() {
   ];
 
   const getNavClasses = () => {
-    if (mobileMenuOpen) return 'bg-[#1a365d] text-white';
-    if (isScrolledOrNonHome) return 'bg-white text-[#1a365d] shadow-xl';
+    if (mobileMenuOpen) return 'bg-[#2c00cc] text-white';
+    if (isScrolledOrNonHome) return 'bg-white text-[#2c00cc] shadow-xl';
     return 'bg-transparent text-white';
   };
 
@@ -62,7 +62,7 @@ export default function Navbar() {
     const isActive = pathname === href;
     const base = 'px-4 py-2 font-medium transition-all duration-300 rounded-full';
     if (isScrolledOrNonHome) {
-      return `${base} ${isActive ? 'bg-[#1a365d] text-white' : 'hover:bg-gray-100 text-gray-700'}`;
+      return `${base} ${isActive ? 'bg-[#2c00cc] text-white' : 'hover:bg-gray-100 text-gray-700'}`;
     }
     return `${base} ${isActive ? 'bg-white/20 text-white' : 'hover:bg-white/10 text-white'}`;
   };
@@ -76,7 +76,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-2 py-2">
           <div className="flex items-center justify-between">
             <Link href="/" className="pl-2">
-              <Image src="/swiftXpress-logo.png" alt="SwiftXpress Inc." width={140} height={40} className="h-10 w-auto" />
+              <Image src="/swiftXpress-logo.png" alt="Pulver Global Logistics" width={140} height={40} className="h-10 w-auto" />
             </Link>
 
             <div className="hidden lg:flex items-center gap-1">
@@ -127,7 +127,7 @@ export default function Navbar() {
             <div className="hidden lg:flex items-center gap-3 pr-2">
               <Link
                 href="/track"
-                className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-[#ea580c] to-[#f97316] text-white font-semibold rounded-full hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300 text-sm"
+                className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-[#84cc16] to-[#a3e635] text-white font-semibold rounded-full hover:shadow-lg hover:shadow-lime-500/30 transition-all duration-300 text-sm"
               >
                 <FaSearch className="text-xs" />
                 Track Package
@@ -137,7 +137,7 @@ export default function Navbar() {
             <div className="flex items-center gap-2 lg:hidden pr-1">
               <Link
                 href="/track"
-                className="p-2 rounded-xl bg-[#ea580c] text-white"
+                className="p-2 rounded-xl bg-[#84cc16] text-white"
               >
                 <FaSearch size={18} />
               </Link>
@@ -160,7 +160,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-[#1a365d] pt-24 px-6 lg:hidden"
+            className="fixed inset-0 z-40 bg-[#2c00cc] pt-24 px-6 lg:hidden"
           >
             <div className="flex flex-col gap-1">
               {navLinks.map((link) => (
@@ -172,7 +172,7 @@ export default function Navbar() {
                         className="flex items-center justify-between w-full text-white text-lg font-medium py-4 border-b border-white/10"
                       >
                         <span className="flex items-center gap-3">
-                          <link.icon className="text-[#ea580c]" />
+                          <link.icon className="text-[#84cc16]" />
                           {link.label}
                         </span>
                         <FaChevronDown className={`text-sm transition-transform ${mobileServicesOpen ? 'rotate-180' : ''}`} />
@@ -198,7 +198,7 @@ export default function Navbar() {
                       onClick={() => setMobileMenuOpen(false)}
                       className="flex items-center gap-3 text-white text-lg font-medium py-4 border-b border-white/10"
                     >
-                      <link.icon className="text-[#ea580c]" />
+                      <link.icon className="text-[#84cc16]" />
                       {link.label}
                     </Link>
                   )}
@@ -207,7 +207,7 @@ export default function Navbar() {
               <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="mt-6 px-6 py-4 bg-gradient-to-r from-[#ea580c] to-[#f97316] text-white font-bold rounded-full text-center"
+                className="mt-6 px-6 py-4 bg-gradient-to-r from-[#84cc16] to-[#a3e635] text-white font-bold rounded-full text-center"
               >
                 Get a Quote
               </Link>

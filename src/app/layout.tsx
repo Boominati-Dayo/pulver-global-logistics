@@ -4,15 +4,15 @@ import './globals.css';
 import ClientLayout from '@/components/ClientLayout';
 import SchemaMarkup from '@/components/SchemaMarkup';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://swiftxpressinc.com';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://pulvergloballogistics.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'SwiftXpress Inc. | Fast & Reliable Shipping Solutions',
-    template: 'SwiftXpress Inc. | %s',
+    default: 'Pulver Global Logistics | Fast & Reliable Shipping Solutions',
+    template: 'Pulver Global Logistics | %s',
   },
-  description: 'SwiftXpress Inc. provides comprehensive shipping and logistics solutions worldwide. Real-time package tracking, air freight, sea freight, warehousing, and express delivery services.',
+  description: 'Pulver Global Logistics provides comprehensive shipping and logistics solutions worldwide. Real-time package tracking, air freight, sea freight, warehousing, and express delivery services.',
   keywords: [
     'package delivery',
     'shipping services',
@@ -27,14 +27,14 @@ export const metadata: Metadata = {
     'logistics company',
     'supply chain',
     'freight forwarding',
-    'SwiftXpress',
-    'swift xpress',
-    'swift express inc',
-    'swift express',
+    'Pulver Global Logistics',
+    'pulver global logistics',
+    'pulverglobal',
+    'pgl',
   ],
-  authors: [{ name: 'SwiftXpress Inc.' }],
-  creator: 'SwiftXpress Inc.',
-  publisher: 'SwiftXpress Inc.',
+  authors: [{ name: 'Pulver Global Logistics' }],
+  creator: 'Pulver Global Logistics',
+  publisher: 'Pulver Global Logistics',
   robots: {
     index: true,
     follow: true,
@@ -43,24 +43,24 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: BASE_URL,
-    siteName: 'SwiftXpress Inc.',
-    title: 'SwiftXpress Inc. | Fast & Reliable Shipping Solutions',
-    description: 'SwiftXpress Inc. provides comprehensive shipping and logistics solutions worldwide. Real-time tracking, air freight, sea freight, and express delivery.',
+    siteName: 'Pulver Global Logistics',
+    title: 'Pulver Global Logistics | Fast & Reliable Shipping Solutions',
+    description: 'Pulver Global Logistics provides comprehensive shipping and logistics solutions worldwide. Real-time tracking, air freight, sea freight, and express delivery.',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'SwiftXpress Inc. - Your Trusted Logistics Partner',
+        alt: 'Pulver Global Logistics - Your Trusted Logistics Partner',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SwiftXpress Inc. | Fast & Reliable Shipping Solutions',
-    description: 'SwiftXpress Inc. provides comprehensive shipping and logistics solutions worldwide.',
+    title: 'Pulver Global Logistics | Fast & Reliable Shipping Solutions',
+    description: 'Pulver Global Logistics provides comprehensive shipping and logistics solutions worldwide.',
     images: ['/og-image.png'],
-    creator: '@SwiftXpressInc',
+    creator: '@PulverGlobal',
   },
   icons: {
     icon: '/favicon.ico',
@@ -81,7 +81,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <meta name="theme-color" content="#1a365d" />
+        <meta name="theme-color" content="#2c00cc" />
         <meta name="color-scheme" content="light dark" />
 
         <Script id="smartsupp-chat" strategy="afterInteractive">

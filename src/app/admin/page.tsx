@@ -156,7 +156,7 @@ export default function Admin() {
       const response = await fetch('/api/admin/message', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ toEmail: recipient.email, toName: recipient.name, trackingNumber: selectedTracking.trackingNumber, subject: messageData.subject, message: messageData.message, senderName: messageData.senderName || 'SwiftXpress Inc. Team' }),
+        body: JSON.stringify({ toEmail: recipient.email, toName: recipient.name, trackingNumber: selectedTracking.trackingNumber, subject: messageData.subject, message: messageData.message, senderName: messageData.senderName || 'Pulver Global Logistics Team' }),
       });
       const data = await response.json();
       if (data.success) { setSendSuccess(true); setTimeout(() => { setShowMessageModal(false); setSelectedTracking(null); }, 2000); }
@@ -263,7 +263,7 @@ export default function Admin() {
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#ea580c]"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#84cc16]"></div>
       </div>
     );
   }
@@ -278,10 +278,10 @@ export default function Admin() {
             <p className="text-gray-500 dark:text-gray-400 mt-1">Manage shipments and track deliveries</p>
           </div>
           <div className="flex flex-col md:flex-row gap-3">
-            <button onClick={() => setShowForm(true)} className="flex items-center gap-2 px-5 py-2.5 bg-[#1a365d] text-white rounded-lg hover:bg-[#2c5282] shadow-lg">
+            <button onClick={() => setShowForm(true)} className="flex items-center gap-2 px-5 py-2.5 bg-[#2c00cc] text-white rounded-lg hover:bg-[#5f33ff] shadow-lg">
               <FaPlus /> New Shipment
             </button>
-            <button onClick={() => setShowSettings(!showSettings)} className="flex items-center gap-2 px-5 py-2.5 bg-[#ea580c] text-white rounded-lg hover:bg-[#f97316] shadow-lg">
+            <button onClick={() => setShowSettings(!showSettings)} className="flex items-center gap-2 px-5 py-2.5 bg-[#84cc16] text-white rounded-lg hover:bg-[#a3e635] shadow-lg">
               <FaCog /> Site Settings
             </button>
             <button onClick={handleLogout} className="px-5 py-2.5 bg-red-600 text-white rounded-lg hover:bg-red-700">Logout</button>
@@ -291,7 +291,7 @@ export default function Admin() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           {[{ label: 'Total Shipments', value: trackings.length }, { label: 'In Transit', value: trackings.filter(t => t.status === 'In Transit').length }, { label: 'Delivered', value: trackings.filter(t => t.status === 'Delivered').length }, { label: 'Pending', value: trackings.filter(t => t.status === 'Pending').length }].map((stat, i) => (
             <div key={i} className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm">
-              <p className="text-2xl font-bold text-[#ea580c] dark:text-[#f97316]">{stat.value}</p>
+              <p className="text-2xl font-bold text-[#84cc16] dark:text-[#a3e635]">{stat.value}</p>
               <p className="text-sm text-gray-500 dark:text-gray-400">{stat.label}</p>
             </div>
           ))}
@@ -300,7 +300,7 @@ export default function Admin() {
         <div className="mb-6">
           <div className="relative">
             <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
-            <input type="text" placeholder="Search by tracking number, shipper or receiver..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#ea580c] focus:border-transparent" />
+            <input type="text" placeholder="Search by tracking number, shipper or receiver..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#84cc16] focus:border-transparent" />
           </div>
         </div>
 
@@ -311,7 +311,7 @@ export default function Admin() {
             <div key={tracking._id} className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm">
               <div className="flex flex-col md:flex-row justify-between items-start mb-3">
                 <div>
-                  <p className="font-bold text-[#ea580c] dark:text-[#f97316] text-lg">{tracking.trackingNumber}</p>
+                  <p className="font-bold text-[#84cc16] dark:text-[#a3e635] text-lg">{tracking.trackingNumber}</p>
                   <p className="text-xs text-gray-500">{tracking.origin} → {tracking.destination}</p>
                 </div>
                 <span className={`px-3 py-1 text-xs font-medium rounded-full ${getStatusBg(tracking.status)}`}>{tracking.status}</span>
@@ -358,13 +358,13 @@ export default function Admin() {
               <tbody className="divide-y divide-gray-700">
                 {filteredTrackings.map((tracking) => (
                   <tr key={tracking._id} className="hover:bg-gray-800/50">
-                    <td className="px-4 py-4 whitespace-nowrap text-sm font-bold text-[#ea580c]">{tracking.trackingNumber}</td>
+                    <td className="px-4 py-4 whitespace-nowrap text-sm font-bold text-[#84cc16]">{tracking.trackingNumber}</td>
                     <td className="px-4 py-4 text-sm"><p className="text-gray-100 font-medium">{tracking.shipperName}</p><p className="text-gray-400 text-xs">{tracking.shipperEmail}</p></td>
                     <td className="px-4 py-4 text-sm"><p className="text-gray-100 font-medium">{tracking.receiverName}</p><p className="text-gray-400 text-xs">{tracking.receiverEmail}</p></td>
                     <td className="px-4 py-4 text-sm text-gray-300">{tracking.origin} → {tracking.destination}</td>
                     <td className="px-4 py-4 whitespace-nowrap"><span className={`px-2.5 py-1 text-xs font-medium rounded-full ${getStatusBg(tracking.status)}`}>{tracking.status}</span></td>
                     <td className="px-4 py-4 whitespace-nowrap">
-                      <button onClick={() => toggleLiveMap(tracking.trackingNumber, tracking.showLiveMap)} disabled={togglingMap === tracking.trackingNumber} className={`px-2 py-1 text-xs font-medium rounded-full flex items-center gap-1 ${tracking.showLiveMap ? 'bg-[#ea580c] text-white' : 'bg-gray-600 text-white'} hover:opacity-80 disabled:opacity-50`}>
+                      <button onClick={() => toggleLiveMap(tracking.trackingNumber, tracking.showLiveMap)} disabled={togglingMap === tracking.trackingNumber} className={`px-2 py-1 text-xs font-medium rounded-full flex items-center gap-1 ${tracking.showLiveMap ? 'bg-[#84cc16] text-white' : 'bg-gray-600 text-white'} hover:opacity-80 disabled:opacity-50`}>
                         {togglingMap === tracking.trackingNumber ? <FaSpinner className="animate-spin" size={10} /> : <FaMapMarkerAlt size={10} />}
                         {tracking.showLiveMap ? 'On' : 'Off'}
                       </button>
@@ -389,7 +389,7 @@ export default function Admin() {
       {showForm && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-2 sm:p-4 overflow-y-auto">
           <div className="bg-white dark:bg-gray-800 rounded-2xl w-full max-w-4xl max-h-[95vh] my-2 overflow-hidden shadow-2xl">
-            <div className="bg-gradient-to-r from-[#1a365d] to-[#2c5282] px-4 md:px-6 py-3 md:py-4 flex justify-between items-center sticky top-0 z-10">
+            <div className="bg-gradient-to-r from-[#2c00cc] to-[#5f33ff] px-4 md:px-6 py-3 md:py-4 flex justify-between items-center sticky top-0 z-10">
               <div><h2 className="text-lg md:text-xl font-bold text-white">Create New Shipment</h2><p className="text-white/70 text-xs md:text-sm hidden sm:block">Fill in the shipment details</p></div>
               <button onClick={() => setShowForm(false)} className="text-white/70 hover:text-white"><FaTimes size={20} /></button>
             </div>
@@ -397,14 +397,14 @@ export default function Admin() {
               <form onSubmit={handleCreate} className="space-y-4 md:space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                   <div className="space-y-3 md:space-y-4">
-                    <h3 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2 text-sm md:text-base"><FaUser className="text-[#ea580c]" /> Shipper Information</h3>
+                    <h3 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2 text-sm md:text-base"><FaUser className="text-[#84cc16]" /> Shipper Information</h3>
                     <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Shipper Name *</label><input type="text" required placeholder="Full name" value={formData.shipperName} onChange={(e) => setFormData({...formData, shipperName: e.target.value})} className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
                     <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Shipper Address *</label><input type="text" required placeholder="Shipping address" value={formData.shipperAddress} onChange={(e) => setFormData({...formData, shipperAddress: e.target.value})} className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
                     <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Shipper Phone *</label><input type="tel" required placeholder="Phone number" value={formData.shipperPhone} onChange={(e) => setFormData({...formData, shipperPhone: e.target.value})} className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
                     <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Shipper Email *</label><input type="email" required placeholder="Email address" value={formData.shipperEmail} onChange={(e) => setFormData({...formData, shipperEmail: e.target.value})} className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
                   </div>
                   <div className="space-y-3 md:space-y-4">
-                    <h3 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2 text-sm md:text-base"><FaBox className="text-[#ea580c]" /> Receiver Information</h3>
+                    <h3 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2 text-sm md:text-base"><FaBox className="text-[#84cc16]" /> Receiver Information</h3>
                     <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Receiver Name *</label><input type="text" required placeholder="Full name" value={formData.receiverName} onChange={(e) => setFormData({...formData, receiverName: e.target.value})} className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
                     <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Receiver Address *</label><input type="text" required placeholder="Delivery address" value={formData.receiverAddress} onChange={(e) => setFormData({...formData, receiverAddress: e.target.value})} className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
                     <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Receiver Phone *</label><input type="tel" required placeholder="Phone number" value={formData.receiverPhone} onChange={(e) => setFormData({...formData, receiverPhone: e.target.value})} className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
@@ -413,7 +413,7 @@ export default function Admin() {
                 </div>
 
                 <div className="bg-gray-50 dark:bg-gray-900/50 rounded-xl p-3 md:p-5">
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base"><FaArrowRight className="text-[#ea580c]" /> Shipment Information</h3>
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base"><FaArrowRight className="text-[#84cc16]" /> Shipment Information</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
                     <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Origin *</label><input type="text" required placeholder="Origin" value={formData.origin} onChange={(e) => setFormData({...formData, origin: e.target.value})} className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
                     <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Destination *</label><input type="text" required placeholder="Destination" value={formData.destination} onChange={(e) => setFormData({...formData, destination: e.target.value})} className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
@@ -428,15 +428,15 @@ export default function Admin() {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-                  <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 flex items-center gap-1"><FaCalendar className="text-[#ea580c]" /> Delivery *</label><input type="date" required value={formData.expectedDeliveryDate} onChange={(e) => setFormData({...formData, expectedDeliveryDate: e.target.value})} className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
-                  <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"><FaCalendar className="text-[#ea580c]" /> Pickup *</label><input type="date" required value={formData.pickupDate} onChange={(e) => setFormData({...formData, pickupDate: e.target.value})} className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
-                  <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"><FaClock className="text-[#ea580c]" /> Departure</label><input type="time" value={formData.departureTime} onChange={(e) => setFormData({...formData, departureTime: e.target.value})} className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
+                  <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 flex items-center gap-1"><FaCalendar className="text-[#84cc16]" /> Delivery *</label><input type="date" required value={formData.expectedDeliveryDate} onChange={(e) => setFormData({...formData, expectedDeliveryDate: e.target.value})} className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
+                  <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"><FaCalendar className="text-[#84cc16]" /> Pickup *</label><input type="date" required value={formData.pickupDate} onChange={(e) => setFormData({...formData, pickupDate: e.target.value})} className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
+                  <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"><FaClock className="text-[#84cc16]" /> Departure</label><input type="time" value={formData.departureTime} onChange={(e) => setFormData({...formData, departureTime: e.target.value})} className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
                 </div>
 
                 <div className="bg-gray-50 dark:bg-gray-900/50 rounded-xl p-5">
                   <div className="flex justify-between items-center mb-4">
-                    <h3 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2"><FaBox className="text-[#ea580c]" /> Package Details</h3>
-                    <button type="button" onClick={addPackage} className="px-4 py-2 bg-[#ea580c] text-white rounded-lg text-sm font-medium hover:bg-[#f97316] flex items-center gap-2">
+                    <h3 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2"><FaBox className="text-[#84cc16]" /> Package Details</h3>
+                    <button type="button" onClick={addPackage} className="px-4 py-2 bg-[#84cc16] text-white rounded-lg text-sm font-medium hover:bg-[#a3e635] flex items-center gap-2">
                       <FaPlus size={14} /> Add Package
                     </button>
                   </div>
@@ -464,14 +464,14 @@ export default function Admin() {
                     </div>
                   ))}
                   <div className="mt-4">
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Total Freight ($)</label>
-                    <input type="number" min="0" placeholder="0" value={formData.totalFreight} onChange={(e) => setFormData({...formData, totalFreight: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#ea580c]" />
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Total Freight (USD)</label>
+                    <input type="number" min="0" placeholder="0" value={formData.totalFreight} onChange={(e) => setFormData({...formData, totalFreight: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#84cc16]" />
                   </div>
                 </div>
 
                 <div className="flex justify-end gap-4 pt-4 border-t">
                   <button type="button" onClick={() => setShowForm(false)} className="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">Cancel</button>
-                  <button type="submit" disabled={isSubmitting} className="px-8 py-3 bg-[#1a365d] text-white font-semibold rounded-lg hover:bg-[#2c5282] disabled:opacity-50 flex items-center gap-2">
+                  <button type="submit" disabled={isSubmitting} className="px-8 py-3 bg-[#2c00cc] text-white font-semibold rounded-lg hover:bg-[#5f33ff] disabled:opacity-50 flex items-center gap-2">
                     {isSubmitting ? <><FaSpinner className="animate-spin" /> Creating...</> : <><FaCheck /> Create Shipment</>}
                   </button>
                 </div>
@@ -488,15 +488,15 @@ export default function Admin() {
               <div className="text-center py-6 md:py-8"><div className="w-14 h-14 md:w-16 md:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"><FaCheck className="text-green-600 text-2xl md:text-3xl" /></div><h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white">Message Sent!</h3></div>
             ) : (
               <>
-                <div className="flex justify-between items-center mb-4 md:mb-6"><h2 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2"><FaEnvelope className="text-[#ea580c]" /> Send Message</h2><button onClick={() => setShowMessageModal(false)} className="text-gray-500 hover:text-gray-700 dark:text-gray-400"><FaTimes size={20} /></button></div>
+                <div className="flex justify-between items-center mb-4 md:mb-6"><h2 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2"><FaEnvelope className="text-[#84cc16]" /> Send Message</h2><button onClick={() => setShowMessageModal(false)} className="text-gray-500 hover:text-gray-700 dark:text-gray-400"><FaTimes size={20} /></button></div>
                 <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 md:p-4 mb-4">
                   <p className="text-xs md:text-sm text-gray-500">To: <span className="font-medium text-gray-900 dark:text-white">{messageRecipient === 'shipper' ? selectedTracking.shipperName : selectedTracking.receiverName}</span></p>
-                  <p className="text-xs md:text-sm text-gray-500">Ref: <span className="font-bold text-[#ea580c] dark:text-[#f97316]">{selectedTracking.trackingNumber}</span></p>
+                  <p className="text-xs md:text-sm text-gray-500">Ref: <span className="font-bold text-[#84cc16] dark:text-[#a3e635]">{selectedTracking.trackingNumber}</span></p>
                 </div>
                 <form onSubmit={handleSendMessage} className="space-y-3 md:space-y-4">
                   <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Subject *</label><input type="text" required value={messageData.subject} onChange={(e) => setMessageData({...messageData, subject: e.target.value})} className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
                   <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message *</label><textarea required rows={3} value={messageData.message} onChange={(e) => setMessageData({...messageData, message: e.target.value})} className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white resize-none text-sm md:text-base" /></div>
-                  <div className="flex flex-col-reverse sm:flex-row justify-end gap-2 md:gap-3 pt-2"><button type="button" onClick={() => setShowMessageModal(false)} className="px-4 md:px-5 py-2 border border-gray-300 text-gray-700 dark:border-gray-600 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-sm md:text-base">Cancel</button><button type="submit" disabled={isSending} className="px-4 md:px-5 py-2 bg-[#1a365d] text-white rounded-lg disabled:opacity-50 flex items-center justify-center gap-2 text-sm md:text-base">{isSending ? <><FaSpinner className="animate-spin" /> Sending...</> : <><FaEnvelope /> Send</>}</button></div>
+                  <div className="flex flex-col-reverse sm:flex-row justify-end gap-2 md:gap-3 pt-2"><button type="button" onClick={() => setShowMessageModal(false)} className="px-4 md:px-5 py-2 border border-gray-300 text-gray-700 dark:border-gray-600 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-sm md:text-base">Cancel</button><button type="submit" disabled={isSending} className="px-4 md:px-5 py-2 bg-[#2c00cc] text-white rounded-lg disabled:opacity-50 flex items-center justify-center gap-2 text-sm md:text-base">{isSending ? <><FaSpinner className="animate-spin" /> Sending...</> : <><FaEnvelope /> Send</>}</button></div>
                 </form>
               </>
             )}
@@ -511,15 +511,15 @@ export default function Admin() {
               <div className="text-center py-6 md:py-8"><div className="w-14 h-14 md:w-16 md:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"><FaCheck className="text-green-600 text-2xl md:text-3xl" /></div><h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white">Message Sent!</h3></div>
             ) : (
               <>
-                <div className="flex justify-between items-center mb-4 md:mb-6"><h2 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2"><FaEnvelope className="text-[#ea580c]" /> Send Message</h2><button onClick={() => setShowMessageModal(false)} className="text-gray-500 hover:text-gray-700 dark:text-gray-400"><FaTimes size={20} /></button></div>
+                <div className="flex justify-between items-center mb-4 md:mb-6"><h2 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2"><FaEnvelope className="text-[#84cc16]" /> Send Message</h2><button onClick={() => setShowMessageModal(false)} className="text-gray-500 hover:text-gray-700 dark:text-gray-400"><FaTimes size={20} /></button></div>
                 <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 md:p-4 mb-4">
                   <p className="text-xs md:text-sm text-gray-500">To: <span className="font-medium text-gray-900 dark:text-white">{messageRecipient === 'shipper' ? selectedTracking.shipperName : selectedTracking.receiverName}</span></p>
-                  <p className="text-xs md:text-sm text-gray-500">Ref: <span className="font-bold text-[#ea580c] dark:text-[#f97316]">{selectedTracking.trackingNumber}</span></p>
+                  <p className="text-xs md:text-sm text-gray-500">Ref: <span className="font-bold text-[#84cc16] dark:text-[#a3e635]">{selectedTracking.trackingNumber}</span></p>
                 </div>
                 <form onSubmit={handleSendMessage} className="space-y-3 md:space-y-4">
                   <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Subject *</label><input type="text" required value={messageData.subject} onChange={(e) => setMessageData({...messageData, subject: e.target.value})} className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm md:text-base" /></div>
                   <div><label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message *</label><textarea required rows={3} value={messageData.message} onChange={(e) => setMessageData({...messageData, message: e.target.value})} className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white resize-none text-sm md:text-base" /></div>
-                  <div className="flex flex-col-reverse sm:flex-row justify-end gap-2 md:gap-3 pt-2"><button type="button" onClick={() => setShowMessageModal(false)} className="px-4 md:px-5 py-2 border border-gray-300 text-gray-700 dark:border-gray-600 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-sm md:text-base">Cancel</button><button type="submit" disabled={isSending} className="px-4 md:px-5 py-2 bg-[#1a365d] text-white rounded-lg disabled:opacity-50 flex items-center justify-center gap-2 text-sm md:text-base">{isSending ? <><FaSpinner className="animate-spin" /> Sending...</> : <><FaEnvelope /> Send</>}</button></div>
+                  <div className="flex flex-col-reverse sm:flex-row justify-end gap-2 md:gap-3 pt-2"><button type="button" onClick={() => setShowMessageModal(false)} className="px-4 md:px-5 py-2 border border-gray-300 text-gray-700 dark:border-gray-600 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-sm md:text-base">Cancel</button><button type="submit" disabled={isSending} className="px-4 md:px-5 py-2 bg-[#2c00cc] text-white rounded-lg disabled:opacity-50 flex items-center justify-center gap-2 text-sm md:text-base">{isSending ? <><FaSpinner className="animate-spin" /> Sending...</> : <><FaEnvelope /> Send</>}</button></div>
                 </form>
               </>
             )}
@@ -532,7 +532,7 @@ export default function Admin() {
       {showUpdateModal && selectedTracking && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-white dark:bg-gray-800 rounded-2xl w-full max-w-lg shadow-2xl">
-            <div className="bg-gradient-to-r from-[#1a365d] to-[#2c5282] px-6 py-4 flex justify-between items-center rounded-t-2xl">
+            <div className="bg-gradient-to-r from-[#2c00cc] to-[#5f33ff] px-6 py-4 flex justify-between items-center rounded-t-2xl">
               <div><h2 className="text-xl font-bold text-white">Update Status</h2><p className="text-white/70 text-sm">{selectedTracking.trackingNumber}</p></div>
               <button onClick={() => setShowUpdateModal(false)} className="text-white/70 hover:text-white"><FaTimes size={20} /></button>
             </div>
@@ -553,7 +553,7 @@ export default function Admin() {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Current Location</label>
-                <input type="text" value={updateData.currentLocation} onChange={(e) => setUpdateData({...updateData, currentLocation: e.target.value})} placeholder="e.g. Chicago, IL" className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" />
+                <input type="text" value={updateData.currentLocation} onChange={(e) => setUpdateData({...updateData, currentLocation: e.target.value})} placeholder="e.g. London, UK" className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Remarks</label>
@@ -561,7 +561,7 @@ export default function Admin() {
               </div>
               <div className="flex justify-end gap-3 pt-4 border-t">
                 <button type="button" onClick={() => setShowUpdateModal(false)} className="px-5 py-2.5 border border-gray-300 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">Cancel</button>
-                <button type="submit" disabled={isUpdating} className="px-6 py-2.5 bg-[#ea580c] text-white font-semibold rounded-lg hover:bg-[#f97316] disabled:opacity-50 flex items-center gap-2">
+                <button type="submit" disabled={isUpdating} className="px-6 py-2.5 bg-[#84cc16] text-white font-semibold rounded-lg hover:bg-[#a3e635] disabled:opacity-50 flex items-center gap-2">
                   {isUpdating ? <><FaSpinner className="animate-spin" /> Updating...</> : <><FaCheck /> Update Status</>}
                 </button>
               </div>
@@ -573,21 +573,21 @@ export default function Admin() {
       {showEditModal && selectedTracking && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 overflow-y-auto">
           <div className="bg-white dark:bg-gray-800 rounded-2xl w-full max-w-4xl my-4 shadow-2xl">
-            <div className="bg-gradient-to-r from-[#1a365d] to-[#2c5282] px-6 py-4 flex justify-between items-center sticky top-0 z-10 rounded-t-2xl">
+            <div className="bg-gradient-to-r from-[#2c00cc] to-[#5f33ff] px-6 py-4 flex justify-between items-center sticky top-0 z-10 rounded-t-2xl">
               <div><h2 className="text-xl font-bold text-white">Edit Shipment</h2><p className="text-white/70 text-sm">{selectedTracking.trackingNumber}</p></div>
               <button onClick={() => setShowEditModal(false)} className="text-white/70 hover:text-white"><FaTimes size={20} /></button>
             </div>
             <form onSubmit={handleEditShipment} className="p-6 space-y-6 max-h-[calc(100vh-120px)] overflow-y-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-4">
-                  <h3 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2"><FaUser className="text-[#ea580c]" /> Shipper</h3>
+                  <h3 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2"><FaUser className="text-[#84cc16]" /> Shipper</h3>
                   <div><label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name *</label><input type="text" required value={editData.shipperName} onChange={(e) => setEditData({...editData, shipperName: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" /></div>
                   <div><label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Address</label><input type="text" value={editData.shipperAddress} onChange={(e) => setEditData({...editData, shipperAddress: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" /></div>
                   <div><label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Phone</label><input type="tel" value={editData.shipperPhone} onChange={(e) => setEditData({...editData, shipperPhone: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" /></div>
                   <div><label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label><input type="email" value={editData.shipperEmail} onChange={(e) => setEditData({...editData, shipperEmail: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" /></div>
                 </div>
                 <div className="space-y-4">
-                  <h3 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2"><FaBox className="text-[#ea580c]" /> Receiver</h3>
+                  <h3 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2"><FaBox className="text-[#84cc16]" /> Receiver</h3>
                   <div><label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name *</label><input type="text" required value={editData.receiverName} onChange={(e) => setEditData({...editData, receiverName: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" /></div>
                   <div><label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Address</label><input type="text" value={editData.receiverAddress} onChange={(e) => setEditData({...editData, receiverAddress: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" /></div>
                   <div><label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Phone</label><input type="tel" value={editData.receiverPhone} onChange={(e) => setEditData({...editData, receiverPhone: e.target.value})} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" /></div>
@@ -603,14 +603,14 @@ export default function Admin() {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Show Live Map</label>
                   <label className="flex items-center gap-2 mt-3 cursor-pointer">
-                    <input type="checkbox" checked={editData.showLiveMap} onChange={(e) => setEditData({...editData, showLiveMap: e.target.checked})} className="w-5 h-5 rounded border-gray-300 text-[#ea580c] focus:ring-[#ea580c]" />
+                    <input type="checkbox" checked={editData.showLiveMap} onChange={(e) => setEditData({...editData, showLiveMap: e.target.checked})} className="w-5 h-5 rounded border-gray-300 text-[#84cc16] focus:ring-[#84cc16]" />
                     <span className="text-sm text-gray-700 dark:text-gray-300">Enable map on tracking page</span>
                   </label>
                 </div>
               </div>
               <div className="flex justify-end gap-3 pt-4 border-t">
                 <button type="button" onClick={() => setShowEditModal(false)} className="px-5 py-2.5 border border-gray-300 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">Cancel</button>
-                <button type="submit" disabled={isEditing} className="px-6 py-2.5 bg-[#1a365d] text-white font-semibold rounded-lg hover:bg-[#2c5282] disabled:opacity-50 flex items-center gap-2">
+                <button type="submit" disabled={isEditing} className="px-6 py-2.5 bg-[#2c00cc] text-white font-semibold rounded-lg hover:bg-[#5f33ff] disabled:opacity-50 flex items-center gap-2">
                   {isEditing ? <><FaSpinner className="animate-spin" /> Saving...</> : <><FaCheck /> Save Changes</>}
                 </button>
               </div>
@@ -626,7 +626,7 @@ export default function Admin() {
 
 function SiteSettingsModal({ onClose }: { onClose: () => void }) {
   const [phone, setPhone] = useState('+1 (234) 567-890');
-  const [email, setEmail] = useState('info@swiftxpressinc.com');
+  const [email, setEmail] = useState('info@pulvergloballogistics.com');
   const [isSaving, setIsSaving] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -673,7 +673,7 @@ function SiteSettingsModal({ onClose }: { onClose: () => void }) {
   return (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
       <div className="bg-white dark:bg-gray-800 rounded-2xl w-full max-w-md shadow-2xl">
-        <div className="bg-gradient-to-r from-[#1a365d] to-[#2c5282] px-6 py-4 flex justify-between items-center rounded-t-2xl">
+        <div className="bg-gradient-to-r from-[#2c00cc] to-[#5f33ff] px-6 py-4 flex justify-between items-center rounded-t-2xl">
           <div><h2 className="text-xl font-bold text-white">Site Settings</h2><p className="text-white/70 text-sm">Update contact information</p></div>
           <button onClick={onClose} className="text-white/70 hover:text-white"><FaTimes size={20} /></button>
         </div>
@@ -686,7 +686,7 @@ function SiteSettingsModal({ onClose }: { onClose: () => void }) {
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email Address</label>
             <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white" />
           </div>
-          <button onClick={handleSave} disabled={isSaving} className="w-full py-3 bg-[#ea580c] text-white font-bold rounded-lg hover:bg-[#f97316] disabled:opacity-50 flex items-center justify-center gap-2">
+          <button onClick={handleSave} disabled={isSaving} className="w-full py-3 bg-[#84cc16] text-white font-bold rounded-lg hover:bg-[#a3e635] disabled:opacity-50 flex items-center justify-center gap-2">
             {isSaving ? <><FaSpinner className="animate-spin" /> Saving...</> : 'Save Settings'}
           </button>
         </div>

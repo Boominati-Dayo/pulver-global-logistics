@@ -11,10 +11,10 @@ export interface GeocodingResult {
 const geocodingCache = new Map<string, GeocodingResult>();
 
 const fallbackCoordinates = {
-  us: { lat: 39.8283, lng: -98.5795 },
+  global: { lat: 30, lng: 0 },
   europe: { lat: 54.5260, lng: 15.2551 },
   asia: { lat: 34.0479, lng: 100.6197 },
-  default: { lat: 39.8283, lng: -98.5795 }
+  default: { lat: 30, lng: 0 }
 };
 
 export const geocodeAddress = async (query: string): Promise<GeocodingResult> => {

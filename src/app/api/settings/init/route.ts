@@ -6,8 +6,8 @@ export async function POST() {
   try {
     await connectDB();
     const defaults = [
-      { key: 'phone', value: '+1 (234) 567-890' },
-      { key: 'email', value: 'info@swiftxpressinc.com' },
+      { key: 'phone', value: '+1 (555) 123-4567' },
+      { key: 'email', value: 'info@pulvergloballogistics.com' },
     ];
     for (const item of defaults) {
       await Settings.findOneAndUpdate({ key: item.key }, item, { upsert: true });

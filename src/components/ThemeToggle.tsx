@@ -9,7 +9,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="fixed bottom-4 right-4 z-50 p-3 rounded-full bg-gradient-to-br from-[#ea580c] to-[#1a365d] text-white shadow-lg hover:scale-110 transition-transform"
+      className="fixed bottom-4 right-4 z-50 p-3 rounded-full bg-gradient-to-br from-[#84cc16] to-[#2c00cc] text-white shadow-lg hover:scale-110 transition-transform"
       aria-label="Toggle theme"
     >
       {isDarkMode ? <FaSun className="text-xl" /> : <FaMoon className="text-xl" />}

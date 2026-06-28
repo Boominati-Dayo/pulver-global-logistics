@@ -44,42 +44,42 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#1a365d] to-[#0f2340] px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#2c00cc] to-[#160066] px-4">
       <ToastContainer position="top-center" autoClose={4000} />
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-3">
-            <Image src="/swiftXpress-logo-icon.png" alt="SwiftXpress Inc." width={56} height={56} className="w-14 h-14 rounded-2xl" />
+            <Image src="/swiftXpress-logo-icon.png" alt="Pulver Global Logistics" width={56} height={56} className="w-14 h-14 rounded-2xl" />
           </Link>
         </div>
         <div className="bg-white rounded-2xl shadow-2xl p-8">
           <div className="text-center mb-6">
-            <div className="w-16 h-16 bg-[#ea580c]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <FaLock className="text-[#ea580c] text-2xl" />
+            <div className="w-16 h-16 bg-[#84cc16]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <FaLock className="text-[#84cc16] text-2xl" />
             </div>
             <h2 className="text-2xl font-bold text-gray-900">Admin Login</h2>
-            <p className="text-sm text-gray-500 mt-1">Access the SXI admin dashboard</p>
+            <p className="text-sm text-gray-500 mt-1">Access the admin dashboard</p>
           </div>
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
               <div className="relative">
                 <FaEnvelope className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-                <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#ea580c] focus:border-transparent outline-none transition-all" placeholder="admin@swiftxpressinc.com" />
+                <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#84cc16] focus:border-transparent outline-none transition-all" placeholder="admin@pulvergloballogistics.com" />
               </div>
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
               <div className="relative">
-                <input type={showPassword ? 'text' : 'password'} required value={password} onChange={(e) => setPassword(e.target.value)} className="w-full pl-4 pr-10 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#ea580c] focus:border-transparent outline-none transition-all" placeholder="Enter password" />
+                <input type={showPassword ? 'text' : 'password'} required value={password} onChange={(e) => setPassword(e.target.value)} className="w-full pl-4 pr-10 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#84cc16] focus:border-transparent outline-none transition-all" placeholder="Enter password" />
                 <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">{showPassword ? <FaEyeSlash /> : <FaEye />}</button>
               </div>
             </div>
-            <button type="submit" disabled={isLoading} className="w-full py-3 bg-gradient-to-r from-[#ea580c] to-[#f97316] text-white font-bold rounded-lg hover:shadow-lg disabled:opacity-50 transition-all flex items-center justify-center gap-2">
+            <button type="submit" disabled={isLoading} className="w-full py-3 bg-gradient-to-r from-[#84cc16] to-[#a3e635] text-white font-bold rounded-lg hover:shadow-lg disabled:opacity-50 transition-all flex items-center justify-center gap-2">
               {isLoading ? <><FaSpinner className="animate-spin" /> Signing in...</> : 'Sign In'}
             </button>
           </form>
-          <div className="mt-6 text-center"><Link href="/" className="text-sm text-[#ea580c] hover:underline">← Back to Home</Link></div>
+          <div className="mt-6 text-center"><Link href="/" className="text-sm text-[#84cc16] hover:underline">← Back to Home</Link></div>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { generateToken } from '@/lib/auth';
 
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'info@swiftxpressinc.com';
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@pulvergloballogistics.com';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'BigMotion100$';
 
 export async function POST(request: NextRequest) {

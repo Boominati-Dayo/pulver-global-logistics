@@ -12,7 +12,7 @@ const services = {
     price: 'From $29.99/pkg',
     color: 'from-blue-500 to-blue-600',
     accentColor: '#3b82f6',
-    description: 'Fast and reliable air freight services to 12 countries worldwide. When speed matters, SXI delivers with precision and reliability. Our air freight solutions are designed for businesses and individuals who need time-definite delivery without compromising on safety.',
+    description: 'Fast and reliable air freight services to 12 countries worldwide. When speed matters, Pulver Global Logistics delivers with precision and reliability. Our air freight solutions are designed for businesses and individuals who need time-definite delivery without compromising on safety.',
     heroImage: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80',
     features: [
       '1-3 day delivery to 12 countries',
@@ -74,14 +74,14 @@ const services = {
   'ground-transport': {
     icon: FaTruck,
     title: 'Ground Transport',
-    tagline: 'Nationwide Coverage',
+    tagline: 'Worldwide Coverage',
     price: 'From $9.99/pkg',
     color: 'from-emerald-500 to-green-600',
     accentColor: '#10b981',
-    description: 'Reliable ground transportation across the USA with next-day and economy options. Perfect for domestic shipments of all sizes. Our extensive carrier network ensures your packages arrive safely and on time, whether to residential or commercial addresses.',
+    description: 'Reliable ground transportation globally with next-day and economy options. Perfect for domestic shipments of all sizes. Our extensive carrier network ensures your packages arrive safely and on time, whether to residential or commercial addresses.',
     heroImage: '/assets/land-shipment.png',
     features: [
-      'Nationwide USA coverage',
+      'Worldwide coverage',
       'Ground and LTL services',
       'Residential and commercial delivery',
       'Last-mile delivery options',
@@ -97,7 +97,7 @@ const services = {
       { step: '4', title: 'Signature', desc: 'Optional signature confirmation available.' },
     ],
     faqs: [
-      { q: 'How long does ground shipping take?', a: 'Standard ground shipping takes 3-7 business days within the continental USA. Express options offer next-day or 2-day delivery.' },
+      { q: 'How long does ground shipping take?', a: 'Standard ground shipping takes 3-7 business days for standard delivery. Express options offer next-day or 2-day delivery.' },
       { q: 'Do you deliver to residential addresses?', a: 'Yes, we deliver to all addresses including residential, commercial, and PO boxes.' },
       { q: 'What is LTL shipping?', a: 'LTL (Less Than Truckload) is for shipments that do not require a full truck. It is cost-effective for medium-sized cargo.' },
       { q: 'Can I track my ground shipment?', a: 'Yes, all ground shipments include real-time tracking with GPS updates throughout the journey.' },
@@ -111,7 +111,7 @@ const services = {
     price: 'From $0.50/day',
     color: 'from-amber-500 to-orange-500',
     accentColor: '#f59e0b',
-    description: 'Secure warehousing with climate control, inventory management, pick-and-pack, and fulfillment services. Our facilities across the USA provide safe storage for your goods with full distribution capabilities. Whether you need short-term storage or long-term fulfillment, we have you covered.',
+    description: 'Secure warehousing with climate control, inventory management, pick-and-pack, and fulfillment services. Our global facilities provide safe storage for your goods with full distribution capabilities. Whether you need short-term storage or long-term fulfillment, we have you covered.',
     heroImage: 'https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1200&q=80',
     features: [
       'Climate-controlled facilities',
@@ -165,7 +165,7 @@ const services = {
     faqs: [
       { q: 'How fast is same-day delivery?', a: 'Same-day delivery means your package is collected and delivered within the same business day. Delivery times depend on distance and service area.' },
       { q: 'What is the cutoff time for same-day?', a: 'Same-day service cutoff varies by location. Typically, pickup must be scheduled before noon. Contact us for specific timeframes in your area.' },
-      { q: 'Is express delivery available for all locations?', a: 'Express services are available in major metropolitan areas. Next-day delivery covers most of the continental USA.' },
+      { q: 'Is express delivery available for all locations?', a: 'Express services are available in major metropolitan areas. Next-day delivery covers most destinations.' },
       { q: 'What items qualify for express?', a: 'Documents, small packages, medical supplies, electronics, and retail goods qualify. Hazardous materials may have restrictions.' },
     ],
     cta: 'Book Express Delivery',
@@ -281,7 +281,7 @@ export default function ServiceDetailPage({ params }: { params: { service: strin
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Service Not Found</h1>
-          <Link href="/services" className="text-[#ea580c] hover:underline">View all services →</Link>
+          <Link href="/services" className="text-[#84cc16] hover:underline">View all services →</Link>
         </div>
       </div>
     );
@@ -293,9 +293,9 @@ export default function ServiceDetailPage({ params }: { params: { service: strin
       <section className="relative min-h-[60vh] flex items-center overflow-hidden pt-[120px]">
         <div className="absolute inset-0">
           <img src={service.heroImage} alt={service.title} className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1a365d]/90 via-[#1a365d]/70 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#2c00cc]/90 via-[#2c00cc]/70 to-transparent"></div>
         </div>
-        <div className="absolute top-20 right-8 w-72 h-72 bg-[#ea580c]/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 right-8 w-72 h-72 bg-[#84cc16]/20 rounded-full blur-3xl"></div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="max-w-2xl">
@@ -306,7 +306,7 @@ export default function ServiceDetailPage({ params }: { params: { service: strin
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4">{service.title}</h1>
             <p className="text-xl text-white/80 mb-8 leading-relaxed">{service.description}</p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-[#ea580c] to-[#f97316] text-white font-bold rounded-full hover:shadow-xl hover:shadow-orange-500/30 transition-all">
+              <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-[#84cc16] to-[#a3e635] text-white font-bold rounded-full hover:shadow-xl hover:shadow-lime-500/30 transition-all">
                 {service.cta} <FaArrowRight className="ml-2" />
               </Link>
               <Link href="/track" className="inline-flex items-center justify-center px-8 py-4 border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition-all">
@@ -320,11 +320,11 @@ export default function ServiceDetailPage({ params }: { params: { service: strin
       {/* Price Badge */}
       <section className="py-8 bg-white dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-center gap-3 bg-gradient-to-r from-[#ea580c]/10 to-[#f97316]/10 rounded-2xl py-6 px-8 border border-[#ea580c]/20 max-w-md mx-auto">
-            <Icon className="text-3xl text-[#ea580c]" />
+          <div className="flex items-center justify-center gap-3 bg-gradient-to-r from-[#84cc16]/10 to-[#a3e635]/10 rounded-2xl py-6 px-8 border border-[#84cc16]/20 max-w-md mx-auto">
+            <Icon className="text-3xl text-[#84cc16]" />
             <div>
               <p className="text-sm text-gray-500 dark:text-gray-400">Starting Price</p>
-              <p className="text-2xl font-bold text-[#1a365d] dark:text-white">{service.price}</p>
+              <p className="text-2xl font-bold text-[#2c00cc] dark:text-white">{service.price}</p>
             </div>
           </div>
         </div>
@@ -334,14 +334,14 @@ export default function ServiceDetailPage({ params }: { params: { service: strin
       <section className="py-20 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1a365d] dark:text-white mb-4">What We Offer</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#2c00cc] dark:text-white mb-4">What We Offer</h2>
             <p className="text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">Comprehensive {service.title.toLowerCase()} services designed for reliability and performance</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {service.features.map((feature, index) => (
               <div key={index} className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700 flex items-start gap-4">
-                <div className="w-8 h-8 rounded-full bg-[#ea580c]/10 flex items-center justify-center flex-shrink-0">
-                  <FaCheck className="text-[#ea580c] text-sm" />
+                <div className="w-8 h-8 rounded-full bg-[#84cc16]/10 flex items-center justify-center flex-shrink-0">
+                  <FaCheck className="text-[#84cc16] text-sm" />
                 </div>
                 <span className="text-gray-700 dark:text-gray-300 font-medium">{feature}</span>
               </div>
@@ -354,19 +354,19 @@ export default function ServiceDetailPage({ params }: { params: { service: strin
       <section className="py-20 bg-white dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1a365d] dark:text-white mb-4">How It Works</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#2c00cc] dark:text-white mb-4">How It Works</h2>
             <p className="text-lg text-gray-500 dark:text-gray-400">Simple, streamlined process from start to finish</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {service.howItWorks.map((step, index) => (
               <div key={index} className="text-center relative">
                 {index < service.howItWorks.length - 1 && (
-                  <div className="hidden md:block absolute top-10 left-[60%] w-[80%] h-0.5 bg-gradient-to-r from-[#ea580c] to-[#f97316]"></div>
+                  <div className="hidden md:block absolute top-10 left-[60%] w-[80%] h-0.5 bg-gradient-to-r from-[#84cc16] to-[#a3e635]"></div>
                 )}
-                <div className="w-20 h-20 bg-gradient-to-br from-[#ea580c] to-[#f97316] rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                <div className="w-20 h-20 bg-gradient-to-br from-[#84cc16] to-[#a3e635] rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                   <span className="text-white text-2xl font-bold">{step.step}</span>
                 </div>
-                <h3 className="text-lg font-bold text-[#1a365d] dark:text-white mb-2">{step.title}</h3>
+                <h3 className="text-lg font-bold text-[#2c00cc] dark:text-white mb-2">{step.title}</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm">{step.desc}</p>
               </div>
             ))}
@@ -378,13 +378,13 @@ export default function ServiceDetailPage({ params }: { params: { service: strin
       <section className="py-20 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1a365d] dark:text-white mb-4">Frequently Asked Questions</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#2c00cc] dark:text-white mb-4">Frequently Asked Questions</h2>
             <p className="text-lg text-gray-500 dark:text-gray-400">Common questions about {service.title.toLowerCase()}</p>
           </div>
           <div className="space-y-4">
             {service.faqs.map((faq, index) => (
               <div key={index} className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
-                <h4 className="text-lg font-bold text-[#1a365d] dark:text-white mb-3">{faq.q}</h4>
+                <h4 className="text-lg font-bold text-[#2c00cc] dark:text-white mb-3">{faq.q}</h4>
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{faq.a}</p>
               </div>
             ))}
@@ -393,15 +393,15 @@ export default function ServiceDetailPage({ params }: { params: { service: strin
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-to-r from-[#ea580c] to-[#f97316]">
+      <section className="py-20 bg-gradient-to-r from-[#84cc16] to-[#a3e635]">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Ship with {service.title}?</h2>
           <p className="text-xl text-white/80 mb-8">Get a custom quote for your {service.title.toLowerCase()} needs</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-[#1a365d] text-white font-bold rounded-full hover:bg-[#0f2340] transition-all shadow-lg">
+            <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-[#2c00cc] text-white font-bold rounded-full hover:bg-[#160066] transition-all shadow-lg">
               {service.cta} <FaArrowRight className="ml-2" />
             </Link>
-            <Link href="/services" className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-bold rounded-full hover:bg-white hover:text-[#ea580c] transition-all">
+            <Link href="/services" className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-bold rounded-full hover:bg-white hover:text-[#84cc16] transition-all">
               View All Services
             </Link>
           </div>
@@ -411,14 +411,14 @@ export default function ServiceDetailPage({ params }: { params: { service: strin
       {/* Other Services */}
       <section className="py-16 bg-white dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4">
-          <h3 className="text-2xl font-bold text-[#1a365d] dark:text-white text-center mb-10">Explore Other Services</h3>
+          <h3 className="text-2xl font-bold text-[#2c00cc] dark:text-white text-center mb-10">Explore Other Services</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {Object.entries(services)
               .filter(([key]) => key !== params.service)
               .map(([key, svc]) => (
                 <Link key={key} href={`/services/${key}`} className="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 hover:shadow-lg transition-all text-center group">
-                  <svc.icon className="text-2xl text-[#ea580c] mx-auto mb-2 group-hover:scale-110 transition-transform" />
-                  <p className="text-sm font-bold text-[#1a365d] dark:text-white">{svc.title}</p>
+                  <svc.icon className="text-2xl text-[#84cc16] mx-auto mb-2 group-hover:scale-110 transition-transform" />
+                  <p className="text-sm font-bold text-[#2c00cc] dark:text-white">{svc.title}</p>
                 </Link>
               ))}
           </div>

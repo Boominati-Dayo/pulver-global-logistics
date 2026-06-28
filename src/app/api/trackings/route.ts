@@ -4,7 +4,7 @@ import Tracking from '@/models/Tracking';
 import { v4 as uuidv4 } from 'uuid';
 
 const generateTrackingNumber = (): string => {
-  const prefix = 'SXI';
+  const prefix = 'PGL';
   const timestamp = Date.now().toString().slice(-6);
   const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
   return `${prefix}${timestamp}${random}`;

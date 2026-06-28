@@ -4,31 +4,31 @@ export default function SchemaMarkup() {
     '@graph': [
       {
         '@type': 'Organization',
-        '@id': 'https://swiftxpressinc.com/#organization',
-        'name': 'SwiftXpress Inc.',
-        'url': 'https://swiftxpressinc.com',
-        'logo': 'https://swiftxpressinc.com/logo.png',
+        '@id': 'https://pulvergloballogistics.com/#organization',
+        'name': 'Pulver Global Logistics',
+        'url': 'https://pulvergloballogistics.com',
+        'logo': 'https://pulvergloballogistics.com/logo.png',
         'description': 'Professional logistics and shipping services across 12 countries. Air freight, sea freight, ground transport, and express delivery.',
         'foundingDate': '2022',
         'knowsAbout': ['Logistics', 'Shipping', 'Air Freight', 'Sea Freight', 'Supply Chain'],
         'areaServed': 'Worldwide',
         'contactPoint': {
           '@type': 'ContactPoint',
-          'telephone': '+1-234-567-890',
+          'telephone': '+1-800-PULVER',
           'contactType': 'customer service',
-          'email': 'info@swiftxpressinc.com',
+          'email': 'info@pulvergloballogistics.com',
           'availableLanguage': 'English'
         }
       },
       {
         '@type': 'WebSite',
-        '@id': 'https://swiftxpressinc.com/#website',
-        'url': 'https://swiftxpressinc.com',
-        'name': 'SwiftXpress Inc.',
-        'publisher': { '@id': 'https://swiftxpressinc.com/#organization' },
+        '@id': 'https://pulvergloballogistics.com/#website',
+        'url': 'https://pulvergloballogistics.com',
+        'name': 'Pulver Global Logistics',
+        'publisher': { '@id': 'https://pulvergloballogistics.com/#organization' },
         'potentialAction': {
           '@type': 'SearchAction',
-          'target': 'https://swiftxpressinc.com/track?tracking={search_term_string}',
+          'target': 'https://pulvergloballogistics.com/track?tracking={search_term_string}',
           'query-input': 'required name=search_term_string'
         }
       }
