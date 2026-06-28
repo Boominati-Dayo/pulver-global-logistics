@@ -49,7 +49,7 @@ export default function Login() {
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-3">
-            <Image src="/swiftXpress-logo-icon.png" alt="Pulver Global Logistics" width={56} height={56} className="w-14 h-14 rounded-2xl" />
+            <Image src="/pulver-logo-icon.png" alt="Pulver Global Logistics" width={56} height={56} className="w-14 h-14 rounded-2xl" />
           </Link>
         </div>
         <div className="bg-white rounded-2xl shadow-2xl p-8">

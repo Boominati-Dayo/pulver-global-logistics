@@ -76,7 +76,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-2 py-2">
           <div className="flex items-center justify-between">
             <Link href="/" className="pl-2">
-              <Image src="/swiftXpress-logo.png" alt="Pulver Global Logistics" width={140} height={40} className="h-10 w-auto" />
+              <Image src="/pulver-logo.png" alt="Pulver Global Logistics" width={140} height={40} className="h-10 w-auto" />
             </Link>
 
             <div className="hidden lg:flex items-center gap-1">

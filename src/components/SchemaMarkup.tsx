@@ -7,7 +7,7 @@ export default function SchemaMarkup() {
         '@id': 'https://pulvergloballogistics.com/#organization',
         'name': 'Pulver Global Logistics',
         'url': 'https://pulvergloballogistics.com',
-        'logo': 'https://pulvergloballogistics.com/logo.png',
+        'logo': 'https://pulvergloballogistics.com/pulver-logo.png',
         'description': 'Professional logistics and shipping services worldwide. Air freight, sea freight, ground transport, and express delivery.',
         'foundingDate': '2022',
         'knowsAbout': ['Logistics', 'Shipping', 'Air Freight', 'Sea Freight', 'Supply Chain'],
