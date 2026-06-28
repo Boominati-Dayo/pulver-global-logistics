@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useTheme } from '@/components/ClientLayout';
 import { useSettings } from '@/components/SettingsContext';
-import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock, FaUser, FaEnvelopeOpenText, FaCheckCircle, FaSpinner, FaPlane, FaShip, FaTruck, FaWarehouse, FaRocket } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock, FaUser, FaEnvelopeOpenText, FaCheckCircle, FaSpinner, FaPlane, FaShip, FaTruck, FaWarehouse, FaBolt, FaPaw, FaShieldAlt, FaCog } from 'react-icons/fa';
 
 export default function Contact() {
   const { isDarkMode } = useTheme();
@@ -69,7 +69,7 @@ export default function Contact() {
             <div className="pt-6 border-t border-gray-200 dark:border-gray-700">
               <h3 className="font-semibold text-[#2c00cc] dark:text-white mb-4">Our Services</h3>
               <div className="grid grid-cols-2 gap-3">
-                {[{ icon: FaPlane, label: 'Air Freight' }, { icon: FaShip, label: 'Sea Freight' }, { icon: FaTruck, label: 'Ground' }, { icon: FaWarehouse, label: 'Warehousing' }].map((s, i) => (
+                {[{ icon: FaTruck, label: 'Ground Transport' }, { icon: FaPlane, label: 'Air Freight' }, { icon: FaShip, label: 'Sea Freight' }, { icon: FaWarehouse, label: 'Warehousing' }, { icon: FaBolt, label: 'Express Delivery' }, { icon: FaPaw, label: 'Pet Transport' }, { icon: FaShieldAlt, label: 'Valuable Goods' }, { icon: FaCog, label: 'Custom Solutions' }].map((s, i) => (
                   <div key={i} className="flex items-center gap-2 text-gray-600 dark:text-gray-400 text-sm">
                     <s.icon className="text-[#84cc16]" /> {s.label}
                   </div>
