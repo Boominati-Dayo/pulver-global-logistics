@@ -65,7 +65,7 @@ export default function Login() {
               <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
               <div className="relative">
                 <FaEnvelope className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-                <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#84cc16] focus:border-transparent outline-none transition-all" placeholder="admin@pulvergloballogistics.com" />
+                <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#84cc16] focus:border-transparent outline-none transition-all" placeholder="info@pulvergloballogistics.com" />
               </div>
             </div>
             <div>
